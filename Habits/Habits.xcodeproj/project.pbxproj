@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13CB8C91F1D3C4F00137BD3 /* Info.plist */; };
+		A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */; };
+		A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */; };
+		A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */; };
 		A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */; };
 		A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB341F1D266A00205600 /* Habits.xcdatamodeld */; };
 		A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB371F1D266A00205600 /* Assets.xcassets */; };
@@ -21,6 +24,9 @@
 
 /* Begin PBXFileReference section */
 		A13CB8C91F1D3C4F00137BD3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitsPointsCell.swift; path = Views/HabitsPointsCell.swift; sourceTree = "<group>"; };
+		A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitsCell.swift; sourceTree = "<group>"; };
+		A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHabitsCell.swift; sourceTree = "<group>"; };
 		A1B0AB2A1F1D266A00205600 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1B0AB351F1D266A00205600 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
@@ -44,6 +50,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A13CB8CB1F1D583700137BD3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */,
+				A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */,
+				A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		A1B0AB211F1D266A00205600 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +79,7 @@
 		A1B0AB2C1F1D266A00205600 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
+				A13CB8CB1F1D583700137BD3 /* Views */,
 				A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */,
 				A1B0AB461F1D2E4500205600 /* Controllers */,
 				A1B0AB451F1D2E3D00205600 /* Storyboards */,
@@ -176,9 +193,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */,
+				A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */,
 				A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */,
 				A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */,
+				A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */,
 				A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */,
+				A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */,
 				A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
