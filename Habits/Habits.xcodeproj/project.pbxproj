@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A12637631F1D34E00034E568 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A12637621F1D34E00034E568 /* Info.plist */; };
+		A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13CB8C91F1D3C4F00137BD3 /* Info.plist */; };
 		A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */; };
 		A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB341F1D266A00205600 /* Habits.xcdatamodeld */; };
 		A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB371F1D266A00205600 /* Assets.xcassets */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A12637621F1D34E00034E568 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Supporting/Info.plist; sourceTree = "<group>"; };
+		A13CB8C91F1D3C4F00137BD3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1B0AB2A1F1D266A00205600 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1B0AB351F1D266A00205600 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
@@ -63,7 +63,6 @@
 		A1B0AB2C1F1D266A00205600 /* Habits */ = {
 			isa = PBXGroup;
 			children = (
-				A12637621F1D34E00034E568 /* Info.plist */,
 				A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */,
 				A1B0AB461F1D2E4500205600 /* Controllers */,
 				A1B0AB451F1D2E3D00205600 /* Storyboards */,
@@ -97,6 +96,7 @@
 		A1B0AB551F1D33A300205600 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A13CB8C91F1D3C4F00137BD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,7 +163,7 @@
 				A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */,
 				A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */,
 				A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */,
-				A12637631F1D34E00034E568 /* Info.plist in Resources */,
+				A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */,
 				A1B0AB521F1D336900205600 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
