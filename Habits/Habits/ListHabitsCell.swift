@@ -6,7 +6,7 @@
 //  Copyright © 2017 Emily Chin. All rights reserved.
 //
 
-
+import Foundation
 import UIKit
 
 class ListHabitsCell: UITableViewCell {

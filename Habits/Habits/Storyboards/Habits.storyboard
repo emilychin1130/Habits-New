@@ -12,7 +12,7 @@
         <!--Habits-->
         <scene sceneID="R8M-dT-aaK">
             <objects>
-                <viewController id="o30-tk-EQ0" customClass="ListHabitsViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="o30-tk-EQ0" customClass="ListHabitsTableViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VQZ-bb-UHf"/>
                         <viewControllerLayoutGuide type="bottom" id="bvu-9J-34I"/>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="u2q-uj-5iN" userLabel="Points Cell" customClass="HabitsPointsCell" customModule="Habits" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PointsCell" rowHeight="40" id="u2q-uj-5iN" userLabel="Points Cell" customClass="HabitsPointsCell" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2q-uj-5iN" id="GaE-xT-lWk">
@@ -59,7 +59,7 @@
                                             <outlet property="pointsLabel" destination="v2J-hR-JHW" id="n9o-pN-iQM"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="QU8-dB-hq9" userLabel="Add Cell" customClass="AddHabitsCell" customModule="Habits" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCell" rowHeight="50" id="QU8-dB-hq9" userLabel="Add Cell" customClass="AddHabitsCell" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QU8-dB-hq9" id="9aL-h6-A2F">
@@ -75,6 +75,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-xT-Jl8" userLabel="Add Button">
                                                     <rect key="frame" x="314" y="9" width="46" height="30"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <segue destination="4zl-3m-Tl4" kind="show" identifier="addHabit" id="13Q-lQ-ka5"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -89,7 +92,7 @@
                                             <outlet property="addHabitButton" destination="qqz-xT-Jl8" id="EPQ-XE-w2Z"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="P6f-mg-yyc" userLabel="Habit Cell" customClass="ListHabitsCell" customModule="Habits" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitCell" rowHeight="75" id="P6f-mg-yyc" userLabel="Habit Cell" customClass="ListHabitsCell" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P6f-mg-yyc" id="5Sl-bq-pPF">
@@ -119,9 +122,6 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="o30-tk-EQ0" id="gcr-S6-3MS"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -223,4 +223,7 @@
             <point key="canvasLocation" x="960.79999999999995" y="-334.18290854572717"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="13Q-lQ-ka5"/>
+    </inferredMetricsTieBreakers>
 </document>

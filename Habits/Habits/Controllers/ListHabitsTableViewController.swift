@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ListHabitsViewController: UIViewController {
+class ListHabitsTableViewController: UITableViewController {
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
         
         // for now, simply defining the method is sufficient.
