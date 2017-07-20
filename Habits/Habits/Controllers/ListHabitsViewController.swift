@@ -43,7 +43,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return habits.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,19 +95,21 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.row {
-        case 0:
-            return 40
-            
-        case 1:
-            return 50
-            
-        case 2:
-            return 75
-            
-        default:
-            fatalError()
-        }
+        return 75
+        
+//        switch indexPath.row {
+//        case 0:
+//            return 40
+//            
+//        case 1:
+//            return 50
+//            
+//        case 2:
+//            return 75
+//            
+//        default:
+//            fatalError()
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

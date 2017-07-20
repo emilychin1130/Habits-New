@@ -172,12 +172,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZ0-lH-y6l" userLabel="Hour Picker">
+                                <rect key="frame" x="20" y="352" width="150" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="eXI-6E-7aP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="4zl-3m-Tl4" id="9bi-Qj-EFx"/>
+                                    <outlet property="delegate" destination="4zl-3m-Tl4" id="SVz-GU-Qw2"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lcY-Qu-MPy" userLabel="Minute Picker">
+                                <rect key="frame" x="205" y="352" width="150" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="922-3v-iMV"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="4zl-3m-Tl4" id="3FA-Sb-dFx"/>
+                                    <outlet property="delegate" destination="4zl-3m-Tl4" id="0IF-0L-boz"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="centerY" secondItem="7Eo-hN-nvq" secondAttribute="centerY" id="2DZ-gO-Aub"/>
+                            <constraint firstItem="tZ0-lH-y6l" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="20" id="3JH-aH-gw0"/>
                             <constraint firstAttribute="trailing" secondItem="nJM-UY-LhW" secondAttribute="trailing" constant="15" id="4YV-kj-Fiz"/>
+                            <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="lcY-Qu-MPy" secondAttribute="bottom" constant="50" id="T4V-Ag-nU6"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="leading" secondItem="7Eo-hN-nvq" secondAttribute="trailing" constant="20" id="cfA-V7-0Vo"/>
+                            <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="tZ0-lH-y6l" secondAttribute="bottom" constant="50" id="etT-u6-qhL"/>
+                            <constraint firstAttribute="trailing" secondItem="lcY-Qu-MPy" secondAttribute="trailing" constant="20" id="hjy-oj-Y1h"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="top" secondItem="Lrj-7j-DWr" secondAttribute="bottom" constant="15" id="kDv-iy-dzl"/>
                             <constraint firstItem="7Eo-hN-nvq" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="15" id="sWt-Ks-uaH"/>
                         </constraints>
@@ -196,6 +220,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="habitNameTextField" destination="nJM-UY-LhW" id="lOn-BZ-1pv"/>
+                        <outlet property="hourPicker" destination="tZ0-lH-y6l" id="0U3-2d-Ha1"/>
+                        <outlet property="minutePicker" destination="lcY-Qu-MPy" id="J2I-Zo-thq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj3-yG-6cn" userLabel="First Responder" sceneMemberID="firstResponder"/>
