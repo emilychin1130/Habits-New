@@ -11,5 +11,4 @@ import UIKit
 
 class HabitInformationViewController: UIViewController {
     @IBOutlet weak var habitNameTextField: UITextField!
-
 }

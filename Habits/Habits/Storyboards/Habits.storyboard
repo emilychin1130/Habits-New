@@ -12,7 +12,7 @@
         <!--Habits-->
         <scene sceneID="R8M-dT-aaK">
             <objects>
-                <viewController id="o30-tk-EQ0" customClass="ListHabitsTableViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="o30-tk-EQ0" customClass="ListHabitsViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VQZ-bb-UHf"/>
                         <viewControllerLayoutGuide type="bottom" id="bvu-9J-34I"/>
@@ -72,25 +72,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqz-xT-Jl8" userLabel="Add Button">
-                                                    <rect key="frame" x="314" y="9" width="46" height="30"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <segue destination="4zl-3m-Tl4" kind="show" identifier="addHabit" id="13Q-lQ-ka5"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="qqz-xT-Jl8" secondAttribute="trailing" constant="15" id="64E-JT-JkW"/>
                                                 <constraint firstAttribute="bottom" secondItem="tbH-TA-eml" secondAttribute="bottom" id="P9b-Vp-3We"/>
                                                 <constraint firstItem="tbH-TA-eml" firstAttribute="leading" secondItem="9aL-h6-A2F" secondAttribute="leading" constant="15" id="aAk-E7-7J3"/>
                                                 <constraint firstItem="tbH-TA-eml" firstAttribute="top" secondItem="9aL-h6-A2F" secondAttribute="top" id="aJ1-Kx-50c"/>
-                                                <constraint firstItem="qqz-xT-Jl8" firstAttribute="centerY" secondItem="tbH-TA-eml" secondAttribute="centerY" id="uGf-GJ-I6r"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="addHabitButton" destination="qqz-xT-Jl8" id="EPQ-XE-w2Z"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitCell" rowHeight="75" id="P6f-mg-yyc" userLabel="Habit Cell" customClass="ListHabitsCell" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="118" width="375" height="75"/>
@@ -122,6 +110,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="o30-tk-EQ0" id="cX3-Ok-ygH"/>
+                                    <outlet property="delegate" destination="o30-tk-EQ0" id="OyO-jR-V9f"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -132,7 +125,21 @@
                             <constraint firstAttribute="bottom" secondItem="VvX-3c-C9N" secondAttribute="bottom" id="rHG-Tm-cKc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Habits" id="MkK-n5-7NH"/>
+                    <navigationItem key="navigationItem" title="Habits" id="MkK-n5-7NH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="IpQ-WX-5fC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qqz-xT-Jl8" userLabel="Add Button">
+                                <rect key="frame" x="313" y="7" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="4zl-3m-Tl4" kind="show" identifier="addHabit" id="13Q-lQ-ka5"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="VvX-3c-C9N" id="p8I-hT-SdP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNg-nv-lgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -181,19 +188,13 @@
                                 <segue destination="BD9-Ib-NXL" kind="unwind" identifier="back" unwindAction="unwindToListHabitsViewController:" id="MMq-ao-FI9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="frs-AG-v9l">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S36-pm-Asa">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ibO-xg-G66">
                             <connections>
-                                <segue destination="BD9-Ib-NXL" kind="unwind" identifier="save" unwindAction="unwindToListHabitsViewController:" id="KuE-kq-FZ4"/>
+                                <segue destination="BD9-Ib-NXL" kind="unwind" identifier="save" unwindAction="unwindToListHabitsViewController:" id="7XW-2D-ehs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="ykW-gB-R0G" id="B9W-ne-lwa"/>
                         <outlet property="habitNameTextField" destination="nJM-UY-LhW" id="lOn-BZ-1pv"/>
                     </connections>
                 </viewController>
@@ -224,6 +225,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="13Q-lQ-ka5"/>
+        <segue reference="lgk-Ol-ghi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,10 +16,11 @@
 		A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB371F1D266A00205600 /* Assets.xcassets */; };
 		A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB471F1D2E5E00205600 /* ViewController.swift */; };
 		A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */; };
-		A1B0AB4E1F1D2F6600205600 /* ListHabitsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB4D1F1D2F6600205600 /* ListHabitsTableViewController.swift */; };
+		A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */; };
 		A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB4F1F1D334800205600 /* Habits.storyboard */; };
 		A1B0AB521F1D336900205600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB511F1D336900205600 /* Main.storyboard */; };
 		A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */; };
+		A1F1C70C1F210E6700925A2A /* coreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,10 +34,11 @@
 		A1B0AB371F1D266A00205600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1B0AB471F1D2E5E00205600 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 		A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitInformationViewController.swift; path = Controllers/HabitInformationViewController.swift; sourceTree = "<group>"; };
-		A1B0AB4D1F1D2F6600205600 /* ListHabitsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListHabitsTableViewController.swift; path = Controllers/ListHabitsTableViewController.swift; sourceTree = "<group>"; };
+		A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListHabitsViewController.swift; path = Controllers/ListHabitsViewController.swift; sourceTree = "<group>"; };
 		A1B0AB4F1F1D334800205600 /* Habits.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Habits.storyboard; path = Storyboards/Habits.storyboard; sourceTree = "<group>"; };
 		A1B0AB511F1D336900205600 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
 		A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreDataHelper.swift; path = Helpers/coreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				A1B0AB371F1D266A00205600 /* Assets.xcassets */,
 				A1B0AB551F1D33A300205600 /* Supporting Files */,
 				A1B0AB341F1D266A00205600 /* Habits.xcdatamodeld */,
+				A1F1C70D1F210E7B00925A2A /* Helpers */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -104,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A1B0AB471F1D2E5E00205600 /* ViewController.swift */,
-				A1B0AB4D1F1D2F6600205600 /* ListHabitsTableViewController.swift */,
+				A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */,
 				A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */,
 			);
 			name = Controllers;
@@ -116,6 +119,14 @@
 				A13CB8C91F1D3C4F00137BD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1F1C70D1F210E7B00925A2A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,11 +206,12 @@
 				A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */,
 				A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */,
 				A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */,
-				A1B0AB4E1F1D2F6600205600 /* ListHabitsTableViewController.swift in Sources */,
+				A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */,
 				A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */,
 				A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */,
 				A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */,
 				A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */,
+				A1F1C70C1F210E6700925A2A /* coreDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
