@@ -61,6 +61,8 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
             habitNameTextField.text = habit.habit
             chosenHour = habit.hour
             chosenMinute = habit.minute
+            displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
+ 
             //habit.hour = "5"
             //habit.minute = "57"
             
@@ -77,6 +79,7 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var displaySelectedTime: UILabel!
+    @IBOutlet weak var ampmSelector: UISegmentedControl!
     
     //var hourPickerData: [Int] = [Int]()
    // var minutePickerData: [Int] = [Int]()

@@ -244,6 +244,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ampmSelector" destination="qTn-No-YiS" id="s7f-P5-W9G"/>
                         <outlet property="displaySelectedTime" destination="sqG-8J-1FD" id="JeZ-Uq-J5d"/>
                         <outlet property="habitNameTextField" destination="nJM-UY-LhW" id="lOn-BZ-1pv"/>
                         <outlet property="hourPicker" destination="tZ0-lH-y6l" id="0U3-2d-Ha1"/>
