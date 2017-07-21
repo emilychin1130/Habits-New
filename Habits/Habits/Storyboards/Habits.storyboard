@@ -29,7 +29,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2q-uj-5iN" id="GaE-xT-lWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-hR-JHW" userLabel="Number of Points">
@@ -63,7 +63,7 @@
                                         <rect key="frame" x="0.0" y="68" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QU8-dB-hq9" id="9aL-h6-A2F">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-TA-eml">
@@ -84,7 +84,7 @@
                                         <rect key="frame" x="0.0" y="118" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P6f-mg-yyc" id="5Sl-bq-pPF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
@@ -192,17 +192,42 @@
                                     <outlet property="delegate" destination="4zl-3m-Tl4" id="0IF-0L-boz"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqG-8J-1FD">
+                                <rect key="frame" x="50" y="232" width="275" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="ovI-rR-wWI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="55"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qTn-No-YiS">
+                                <rect key="frame" x="127" y="313" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="F7e-mh-5Q9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="AM"/>
+                                    <segment title="PM"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="centerY" secondItem="7Eo-hN-nvq" secondAttribute="centerY" id="2DZ-gO-Aub"/>
                             <constraint firstItem="tZ0-lH-y6l" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="20" id="3JH-aH-gw0"/>
                             <constraint firstAttribute="trailing" secondItem="nJM-UY-LhW" secondAttribute="trailing" constant="15" id="4YV-kj-Fiz"/>
+                            <constraint firstItem="tZ0-lH-y6l" firstAttribute="top" secondItem="sqG-8J-1FD" secondAttribute="bottom" constant="50" id="Be9-4Q-rvD"/>
+                            <constraint firstItem="qTn-No-YiS" firstAttribute="top" secondItem="sqG-8J-1FD" secondAttribute="bottom" constant="11" id="GO0-XG-4Rm"/>
+                            <constraint firstItem="lcY-Qu-MPy" firstAttribute="top" secondItem="qTn-No-YiS" secondAttribute="bottom" constant="11" id="SCB-x2-9Y8"/>
                             <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="lcY-Qu-MPy" secondAttribute="bottom" constant="50" id="T4V-Ag-nU6"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="leading" secondItem="7Eo-hN-nvq" secondAttribute="trailing" constant="20" id="cfA-V7-0Vo"/>
+                            <constraint firstItem="sqG-8J-1FD" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="50" id="dx5-4r-zr2"/>
                             <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="tZ0-lH-y6l" secondAttribute="bottom" constant="50" id="etT-u6-qhL"/>
                             <constraint firstAttribute="trailing" secondItem="lcY-Qu-MPy" secondAttribute="trailing" constant="20" id="hjy-oj-Y1h"/>
+                            <constraint firstItem="qTn-No-YiS" firstAttribute="centerX" secondItem="5v4-3u-QWw" secondAttribute="centerX" id="ihG-NF-6YT"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="top" secondItem="Lrj-7j-DWr" secondAttribute="bottom" constant="15" id="kDv-iy-dzl"/>
+                            <constraint firstAttribute="trailing" secondItem="sqG-8J-1FD" secondAttribute="trailing" constant="50" id="o0Y-AX-Ag1"/>
                             <constraint firstItem="7Eo-hN-nvq" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="15" id="sWt-Ks-uaH"/>
                         </constraints>
                     </view>
@@ -219,6 +244,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="displaySelectedTime" destination="sqG-8J-1FD" id="JeZ-Uq-J5d"/>
                         <outlet property="habitNameTextField" destination="nJM-UY-LhW" id="lOn-BZ-1pv"/>
                         <outlet property="hourPicker" destination="tZ0-lH-y6l" id="0U3-2d-Ha1"/>
                         <outlet property="minutePicker" destination="lcY-Qu-MPy" id="J2I-Zo-thq"/>

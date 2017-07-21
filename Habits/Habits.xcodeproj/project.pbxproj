@@ -20,7 +20,7 @@
 		A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB4F1F1D334800205600 /* Habits.storyboard */; };
 		A1B0AB521F1D336900205600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB511F1D336900205600 /* Main.storyboard */; };
 		A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */; };
-		A1F1C70C1F210E6700925A2A /* coreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */; };
+		A1F1C70C1F210E6700925A2A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		A1B0AB4F1F1D334800205600 /* Habits.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Habits.storyboard; path = Storyboards/Habits.storyboard; sourceTree = "<group>"; };
 		A1B0AB511F1D336900205600 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
 		A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = coreDataHelper.swift; path = Helpers/coreDataHelper.swift; sourceTree = "<group>"; };
+		A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = Helpers/CoreDataHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +124,7 @@
 		A1F1C70D1F210E7B00925A2A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A1F1C70B1F210E6700925A2A /* coreDataHelper.swift */,
+				A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 				A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */,
 				A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */,
 				A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */,
-				A1F1C70C1F210E6700925A2A /* coreDataHelper.swift in Sources */,
+				A1F1C70C1F210E6700925A2A /* CoreDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
