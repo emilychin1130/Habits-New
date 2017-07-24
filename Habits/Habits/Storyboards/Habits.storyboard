@@ -87,21 +87,30 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
-                                                    <rect key="frame" x="20" y="15" width="70" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
+                                                    <rect key="frame" x="20" y="15" width="335" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c19-pu-QYg">
-                                                    <rect key="frame" x="20" y="38" width="77" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 DAYS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c19-pu-QYg">
+                                                    <rect key="frame" x="20" y="38" width="335" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="kZn-B6-IZE" secondAttribute="trailing" constant="20" id="2Cf-es-eUS"/>
+                                                <constraint firstItem="c19-pu-QYg" firstAttribute="leading" secondItem="5Sl-bq-pPF" secondAttribute="leading" constant="20" id="2hC-Si-irj"/>
+                                                <constraint firstAttribute="trailing" secondItem="c19-pu-QYg" secondAttribute="trailing" constant="20" id="4Ma-tW-9ey"/>
+                                                <constraint firstItem="kZn-B6-IZE" firstAttribute="leading" secondItem="5Sl-bq-pPF" secondAttribute="leading" constant="20" id="7oO-xm-bYc"/>
+                                                <constraint firstItem="c19-pu-QYg" firstAttribute="top" secondItem="kZn-B6-IZE" secondAttribute="bottom" constant="2" id="8MT-6d-jCz"/>
+                                                <constraint firstItem="c19-pu-QYg" firstAttribute="top" secondItem="5Sl-bq-pPF" secondAttribute="top" constant="38" id="Jub-hh-q3R"/>
+                                                <constraint firstAttribute="bottom" secondItem="c19-pu-QYg" secondAttribute="bottom" constant="15" id="bP3-lU-eqT"/>
+                                                <constraint firstItem="kZn-B6-IZE" firstAttribute="top" secondItem="5Sl-bq-pPF" secondAttribute="top" constant="15" id="bdQ-oU-efn"/>
+                                                <constraint firstItem="c19-pu-QYg" firstAttribute="leading" secondItem="kZn-B6-IZE" secondAttribute="leading" id="nuy-8T-Def"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nameOfHabit" destination="kZn-B6-IZE" id="9we-Ot-A52"/>
@@ -126,11 +135,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Habits" id="MkK-n5-7NH">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="IpQ-WX-5fC">
+                        <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="IpQ-WX-5fC">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qqz-xT-Jl8" userLabel="Add Button">
                                 <rect key="frame" x="313" y="7" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <accessibility key="accessibilityConfiguration" label="Add"/>
+                                <state key="normal" title="Add"/>
                                 <connections>
                                     <segue destination="4zl-3m-Tl4" kind="show" identifier="addHabit" id="13Q-lQ-ka5"/>
                                 </connections>

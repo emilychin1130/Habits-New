@@ -8,18 +8,17 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var habitNameTextField: UITextField!
     
     var habit: Habit?
-//    var hour: Habit?
-//    var minute: Habit?
     var chosenHour: String? = "1"
     var chosenMinute: String? = "00"
     
-    var hourPickerData = ["1","2","3","4","5","6","7","8","9","10","11","12"]
-    var minutePickerData = ["00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"]
+    var hourPickerData = ["","1","2","3","4","5","6","7","8","9","10","11","12"]
+    var minutePickerData = ["","00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +31,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         
         self.minutePicker.delegate = self
         self.minutePicker.dataSource = self
+        
+        //NOTIFICATION PERMISSION THINGY
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in})
     
     }
     
@@ -43,13 +46,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             let habit = self.habit ?? CoreDataHelper.newHabit()
-            //let hour = chosenHour
-            //            let hour = self.hour ?? CoreDataHelper.newHabit()
-            //            let minute = self.minute ?? CoreDataHelper.newHabit()
             habit.habit = habitNameTextField.text ?? ""
             habit.hour = chosenHour ?? ""
             habit.minute = chosenMinute ?? ""
-            //   habit.days =
+    //      habit.days =
             CoreDataHelper.saveHabit()
         }
     }
@@ -62,9 +62,6 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
             chosenHour = habit.hour
             chosenMinute = habit.minute
             displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
- 
-            //habit.hour = "5"
-            //habit.minute = "57"
             
             //            noteContentTextView.text = note.content
         } else {
@@ -76,6 +73,7 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     // ALARM
+    
     @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var displaySelectedTime: UILabel!
@@ -85,8 +83,6 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
    // var minutePickerData: [Int] = [Int]()
     
     // PICKER
-    
-
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -113,9 +109,6 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //minute = minutePickerData[row]
-        //chosenHour = hourPickerData[row]
-        //print(hourPickerData[row])
         if pickerView == hourPicker {
             chosenHour = hourPickerData[row]
         }
@@ -124,6 +117,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         }
         displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
     }
+    
+    // NOTIFICATION
+    
+    
     
     
 }
