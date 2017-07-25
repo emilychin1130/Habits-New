@@ -17,8 +17,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     var chosenHour: String? = "1"
     var chosenMinute: String? = "00"
     
-    var hourPickerData = ["","1","2","3","4","5","6","7","8","9","10","11","12"]
-    var minutePickerData = ["","00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+    var hourPickerData = ["Hour","1","2","3","4","5","6","7","8","9","10","11","12"]
+    var minutePickerData = ["Minute","00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,10 +34,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         self.minutePicker.delegate = self
         self.minutePicker.dataSource = self
         
-        //NOTIFICATION PERMISSION THINGY
+        //NOTIFICATION PERMISSION
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {didAllow, error in})
-    
+        initNotificationSetupCheck()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +63,10 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
             habitNameTextField.text = habit.habit
             chosenHour = habit.hour
             chosenMinute = habit.minute
-            displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
+            if chosenHour != "Hour" && chosenMinute != "Minute" {
+                displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
+            }
+            else { displaySelectedTime.text = "" }
             
             //            noteContentTextView.text = note.content
         } else {
@@ -69,6 +74,19 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
             chosenHour = ""
             chosenMinute = ""
             //            noteContentTextView.text = ""
+        }
+    }
+    
+    // NOTIFICATION PERMISSION
+ 
+    func initNotificationSetupCheck() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
+        { (success, error) in
+            if success {
+                print("Permission Granted")
+            } else {
+                print("There was a problem!")
+            }
         }
     }
     
@@ -115,14 +133,105 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         else if pickerView == minutePicker {
             chosenMinute = minutePickerData[row]
         }
-        displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
+        if chosenHour != "Hour" && chosenMinute != "Minute" {
+            displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
+        }
+        else { displaySelectedTime.text = "" }
     }
+    
+    // AM PM
+    
+    
     
     // NOTIFICATION
     
+//    func scheduleNotification() {
+//        let center = UNUserNotificationCenter.current()
+//        
+//        let content = UNMutableNotificationContent()
+//        content.title = "Late wake up call"
+//        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
+////        content.categoryIdentifier = "alarm"
+////        content.userInfo = ["customData": "fizzbuzz"]
+//        //content.sound = UNNotificationSound.default()
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 11
+//        dateComponents.minute = 16
+//     //   dateComponents.weekday = 1 // day of the week ??
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        
+//        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
+//        center.add(request, withCompletionHandler: nil)
+//    }
+    
+    var hourDictionary = [String: String]()
+    var minuteDictionary = [String: String]()
+    
+    @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+//        if habit != nil {
+//            hourDictionary[habit.habit] = habit.hour
+//            minuteDictionary[habit.habit] = habit.minute
+//        }
+        
+        scheduleNotification(title: "Time to Do Your Tasks!", body: "\(habitNameTextField)", hour: 11, minute: 13)
+//        scheduleNotification()
+//        
+//        let content = UNMutableNotificationContent()
+//        content.title = "do stuffs"
+//        //        content.subtitle =
+//        content.body = habit!.habit!
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 11
+//        dateComponents.minute = 25
+//           dateComponents.weekday = 1 // day of the week ??
+////        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        let date = Date(timeIntervalSinceNow: 3600)
+//        let triggerWeekly = Calendar.current.dateComponents([.weekday,.hour,.minute,], from: date)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
+//        
+//        let identifier = "UYLLocalNotification"
+//        let request = UNNotificationRequest(identifier: identifier,
+//                                            content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
+//            if let error = error {
+//                print("error")// Something went wrong
+//            }
+//        })
+        
+        
+    }
     
     
-    
+//    func scheduleNotification() {
+//        let content = UNMutableNotificationContent()
+//        content.title = "do stuffs"
+////        content.subtitle =
+//        content.body = habit!.habit!
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 14
+//        dateComponents.minute = 00
+//     //   dateComponents.weekday = 1 // day of the week ??
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//    }
+
+    func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+
 }
 
 

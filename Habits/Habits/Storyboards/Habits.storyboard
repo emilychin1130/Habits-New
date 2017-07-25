@@ -249,6 +249,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="ibO-xg-G66">
                             <connections>
+                                <action selector="saveButtonTapped:" destination="4zl-3m-Tl4" id="9G7-4f-hRn"/>
                                 <segue destination="BD9-Ib-NXL" kind="unwind" identifier="save" unwindAction="unwindToListHabitsViewController:" id="7XW-2D-ehs"/>
                             </connections>
                         </barButtonItem>

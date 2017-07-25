@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
@@ -23,6 +24,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        scheduleAll()
     }
     
     override func didReceiveMemoryWarning() {
@@ -130,7 +133,44 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-
-
+    
+    // TIME DICTIONARIES
+    
+//    var hourDictionary = [String:String]()
+//    var minuteDictionary = [String:String]()
+//    
+//    func addToDictionaries() {
+//        for habit in habits {
+//            hourDictionary[habit.habit!] = habit.hour
+//        }
+//        for habit in habits {
+//            minuteDictionary[habit.habit!] = habit.minute
+//        }
+//        print(hourDictionary)
+//        print(minuteDictionary)
+//    }
+    
+    func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func scheduleAll() {
+        for habit in habits {
+            if habit.habit != nil && habit.minute != nil && habit.hour != nil {
+                scheduleNotification(title: "Time to do Your Tasks!", body: habit.habit!, hour: Int(habit.hour!)!, minute: Int(habit.minute!)!)
+            }
+        }
+    }
 }
 
