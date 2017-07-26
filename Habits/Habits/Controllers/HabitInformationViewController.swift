@@ -38,6 +38,8 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         
         initNotificationSetupCheck()
         
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +55,7 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
             habit.minute = chosenMinute ?? ""
     //      habit.days =
             CoreDataHelper.saveHabit()
+            scheduleAll()
         }
     }
     
@@ -95,7 +98,7 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var hourPicker: UIPickerView!
     @IBOutlet weak var minutePicker: UIPickerView!
     @IBOutlet weak var displaySelectedTime: UILabel!
-    @IBOutlet weak var ampmSelector: UISegmentedControl!
+
     
     //var hourPickerData: [Int] = [Int]()
    // var minutePickerData: [Int] = [Int]()
@@ -141,7 +144,26 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     
     // AM PM
     
+    @IBOutlet weak var ampmSelector: UISegmentedControl!
     
+    func rightTime(time: Int) -> Int {
+        switch ampmSelector.selectedSegmentIndex {
+        case 0:
+            if time != 12 {
+                return time
+            } else {
+                return (time + 12)
+            }
+        case 1:
+            if time != 12 {
+                return (time + 12)
+            } else {
+                return time
+            }
+        default:
+            return time
+        }
+    }
     
     // NOTIFICATION
     
@@ -165,16 +187,19 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
 //        center.add(request, withCompletionHandler: nil)
 //    }
     
-    var hourDictionary = [String: String]()
-    var minuteDictionary = [String: String]()
+//    var hourDictionary = [String: String]()
+//    var minuteDictionary = [String: String]()
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
+        
+        scheduleAll()
+    
 //        if habit != nil {
 //            hourDictionary[habit.habit] = habit.hour
 //            minuteDictionary[habit.habit] = habit.minute
 //        }
         
-        scheduleNotification(title: "Time to Do Your Tasks!", body: "\(habitNameTextField)", hour: 11, minute: 13)
+//        scheduleNotification(title: "Time to Do Your Tasks!", body: "\(habitNameTextField)", hour: 11, minute: 13)
 //        scheduleNotification()
 //        
 //        let content = UNMutableNotificationContent()
@@ -217,6 +242,37 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 //    }
 
+//    func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
+//        
+//        let content = UNMutableNotificationContent()
+//        content.title = title
+//        content.body = body
+//        
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = hour
+//        dateComponents.minute = minute
+//        
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    }
+
+    // TIME DICTIONARIES
+    
+    var hourDictionary = [String:Int]()
+    var minuteDictionary = [String:Int]()
+    
+    func addToDictionaries() {
+        if chosenHour != nil {
+            hourDictionary["\(habitNameTextField.text)"] = Int(chosenHour!)
+        }
+        if chosenMinute != nil {
+            minuteDictionary["\(habitNameTextField.text)"] = Int(chosenMinute!)
+        }
+        print(hourDictionary)
+        print(minuteDictionary)
+    }
+    
     func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
         
         let content = UNMutableNotificationContent()
@@ -231,7 +287,22 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
         let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+//
+//    func scheduleAll() {
+//        addToDictionaries()
+//        if let name = habitNameTextField.text {
+//            scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!)
+//        }
+//    }
 
+    // SET EACH TIME THING UP
+    
+    func scheduleAll() {
+        if habitNameTextField.text != nil && chosenHour != nil && chosenMinute != nil {
+            scheduleNotification(title: "Time to do Your Tasks!", body: habitNameTextField.text!, hour: rightTime(time: Int(chosenHour!)!), minute: Int(chosenMinute!)!)
+        }
+        print (rightTime(time: Int(chosenHour!)!))
+    }
 }
 
 

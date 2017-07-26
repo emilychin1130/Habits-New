@@ -136,19 +136,23 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     // TIME DICTIONARIES
     
-//    var hourDictionary = [String:String]()
-//    var minuteDictionary = [String:String]()
-//    
-//    func addToDictionaries() {
-//        for habit in habits {
-//            hourDictionary[habit.habit!] = habit.hour
-//        }
-//        for habit in habits {
-//            minuteDictionary[habit.habit!] = habit.minute
-//        }
-//        print(hourDictionary)
-//        print(minuteDictionary)
-//    }
+    var hourDictionary = [String:Int]()
+    var minuteDictionary = [String:Int]()
+    
+    func addToDictionaries() {
+        for habit in habits {
+            if habit.hour != nil {
+                hourDictionary[habit.habit!] = Int(habit.hour!)
+            }
+        }
+        for habit in habits {
+            if habit.minute != nil {
+                minuteDictionary[habit.habit!] = Int(habit.minute!)
+            }
+        }
+        print(hourDictionary)
+        print(minuteDictionary)
+    }
     
     func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
         
@@ -166,9 +170,10 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func scheduleAll() {
+        addToDictionaries()
         for habit in habits {
-            if habit.habit != nil && habit.minute != nil && habit.hour != nil {
-                scheduleNotification(title: "Time to do Your Tasks!", body: habit.habit!, hour: Int(habit.hour!)!, minute: Int(habit.minute!)!)
+            if let name = habit.habit{
+                scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!)
             }
         }
     }
