@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1387937B5672ABE8CB0C9E93 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */; };
+		A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C59FF1F2906D800A2F152 /* Calendar.storyboard */; };
+		A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A011F29081600A2F152 /* CalendarViewController.swift */; };
+		A13C5A041F29141800A2F152 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A031F29141800A2F152 /* CalendarCell.swift */; };
 		A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13CB8C91F1D3C4F00137BD3 /* Info.plist */; };
 		A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */; };
 		A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */; };
@@ -24,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
+		8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
+		A13C59FF1F2906D800A2F152 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Calendar.storyboard; path = Storyboards/Calendar.storyboard; sourceTree = "<group>"; };
+		A13C5A011F29081600A2F152 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A13C5A031F29141800A2F152 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Views/CalendarCell.swift; sourceTree = "<group>"; };
 		A13CB8C91F1D3C4F00137BD3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitsPointsCell.swift; path = Views/HabitsPointsCell.swift; sourceTree = "<group>"; };
 		A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitsCell.swift; sourceTree = "<group>"; };
@@ -39,6 +48,7 @@
 		A1B0AB511F1D336900205600 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
 		A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = Helpers/CoreDataHelper.swift; sourceTree = "<group>"; };
+		B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1387937B5672ABE8CB0C9E93 /* Pods_Habits.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +69,7 @@
 				A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */,
 				A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */,
 				A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */,
+				A13C5A031F29141800A2F152 /* CalendarCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -67,6 +79,8 @@
 			children = (
 				A1B0AB2C1F1D266A00205600 /* Habits */,
 				A1B0AB2B1F1D266A00205600 /* Products */,
+				DC7ED49B6BE4F1617BB19615 /* Pods */,
+				E506589B7F6E3EEB768F1621 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +112,7 @@
 			children = (
 				A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */,
 				A1B0AB511F1D336900205600 /* Main.storyboard */,
+				A13C59FF1F2906D800A2F152 /* Calendar.storyboard */,
 				A1B0AB4F1F1D334800205600 /* Habits.storyboard */,
 			);
 			name = Storyboards;
@@ -109,6 +124,7 @@
 				A1B0AB471F1D2E5E00205600 /* ViewController.swift */,
 				A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */,
 				A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */,
+				A13C5A011F29081600A2F152 /* CalendarViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -129,6 +145,23 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		DC7ED49B6BE4F1617BB19615 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */,
+				22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E506589B7F6E3EEB768F1621 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,9 +169,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1B0AB3F1F1D266B00205600 /* Build configuration list for PBXNativeTarget "Habits" */;
 			buildPhases = (
+				8208275249F7D4B08277E1D8 /* [CP] Check Pods Manifest.lock */,
 				A1B0AB261F1D266A00205600 /* Sources */,
 				A1B0AB271F1D266A00205600 /* Frameworks */,
 				A1B0AB281F1D266A00205600 /* Resources */,
+				BADEE3B60C3748D4CC6FC379 /* [CP] Embed Pods Frameworks */,
+				42E3505A070EE20AAC6AC2AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,6 +224,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */,
 				A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */,
 				A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */,
 				A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */,
@@ -198,16 +235,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42E3505A070EE20AAC6AC2AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habits/Pods-Habits-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8208275249F7D4B08277E1D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BADEE3B60C3748D4CC6FC379 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Habits/Pods-Habits-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1B0AB261F1D266A00205600 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */,
 				A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */,
 				A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */,
 				A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */,
 				A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */,
 				A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */,
+				A13C5A041F29141800A2F152 /* CalendarCell.swift in Sources */,
 				A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */,
 				A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */,
 				A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */,
@@ -311,6 +398,7 @@
 		};
 		A1B0AB401F1D266B00205600 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Habits/Info.plist;
@@ -323,6 +411,7 @@
 		};
 		A1B0AB411F1D266B00205600 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Habits/Info.plist;

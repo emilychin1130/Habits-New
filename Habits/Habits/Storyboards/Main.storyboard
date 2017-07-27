@@ -9,25 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Calendar-->
-        <scene sceneID="bK7-n1-cyU">
-            <objects>
-                <viewController id="mXy-2b-zZf" userLabel="Calendar" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="r7f-3A-jNZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="GQm-re-4M6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rk2-fx-5ve">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="3cY-ou-VLQ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ey7-IZ-U7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="961" y="321"/>
-        </scene>
         <!--Store-->
         <scene sceneID="vXv-Fb-pYO">
             <objects>
@@ -58,7 +39,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="i2l-F7-iDs" kind="relationship" relationship="viewControllers" id="dq5-Fh-0KA"/>
-                        <segue destination="mXy-2b-zZf" kind="relationship" relationship="viewControllers" id="ooU-Dl-WJt"/>
+                        <segue destination="bzb-Nw-eDV" kind="relationship" relationship="viewControllers" id="ooU-Dl-WJt"/>
                         <segue destination="LEQ-wQ-biN" kind="relationship" relationship="viewControllers" id="21H-Er-2PS"/>
                     </connections>
                 </tabBarController>
@@ -75,6 +56,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvV-ee-VhQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960.79999999999995" y="-334.18290854572717"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="rAp-hW-pik">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Calendar" id="bzb-Nw-eDV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="spf-3R-Olq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jsG-PA-Zdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="960.79999999999995" y="320.68965517241384"/>
         </scene>
     </scenes>
 </document>

@@ -167,94 +167,14 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     
     // NOTIFICATION
     
-//    func scheduleNotification() {
-//        let center = UNUserNotificationCenter.current()
-//        
-//        let content = UNMutableNotificationContent()
-//        content.title = "Late wake up call"
-//        content.body = "The early bird catches the worm, but the second mouse gets the cheese."
-////        content.categoryIdentifier = "alarm"
-////        content.userInfo = ["customData": "fizzbuzz"]
-//        //content.sound = UNNotificationSound.default()
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 11
-//        dateComponents.minute = 16
-//     //   dateComponents.weekday = 1 // day of the week ??
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//        
-//        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
-//        center.add(request, withCompletionHandler: nil)
-//    }
-    
-//    var hourDictionary = [String: String]()
-//    var minuteDictionary = [String: String]()
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         
         scheduleAll()
-    
-//        if habit != nil {
-//            hourDictionary[habit.habit] = habit.hour
-//            minuteDictionary[habit.habit] = habit.minute
-//        }
-        
-//        scheduleNotification(title: "Time to Do Your Tasks!", body: "\(habitNameTextField)", hour: 11, minute: 13)
-//        scheduleNotification()
-//        
-//        let content = UNMutableNotificationContent()
-//        content.title = "do stuffs"
-//        //        content.subtitle =
-//        content.body = habit!.habit!
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 11
-//        dateComponents.minute = 25
-//           dateComponents.weekday = 1 // day of the week ??
-////        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//        let date = Date(timeIntervalSinceNow: 3600)
-//        let triggerWeekly = Calendar.current.dateComponents([.weekday,.hour,.minute,], from: date)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerWeekly, repeats: true)
-//        
-//        let identifier = "UYLLocalNotification"
-//        let request = UNNotificationRequest(identifier: identifier,
-//                                            content: content, trigger: trigger)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: { (error) in
-//            if let error = error {
-//                print("error")// Something went wrong
-//            }
-//        })
-        
         
     }
     
     
-//    func scheduleNotification() {
-//        let content = UNMutableNotificationContent()
-//        content.title = "do stuffs"
-////        content.subtitle =
-//        content.body = habit!.habit!
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 14
-//        dateComponents.minute = 00
-//     //   dateComponents.weekday = 1 // day of the week ??
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//    }
-
-//    func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
-//        
-//        let content = UNMutableNotificationContent()
-//        content.title = title
-//        content.body = body
-//        
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = hour
-//        dateComponents.minute = minute
-//        
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 //    }
 
     // TIME DICTIONARIES
