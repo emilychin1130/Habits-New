@@ -20,13 +20,31 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         habits = CoreDataHelper.retrieveHabits()
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.allowsSelectionDuringEditing = true
+        
+  //      self.editButtonItem()
         
         scheduleAll()
     }
+    
+//    func showEditing(sender: UIBarButtonItem)
+//    {
+//        if(self.tableView.isEditing == true)
+//        {
+//            self.tableView.isEditing = false
+//            self.navigationItem.rightBarButtonItem?.title = "Done"
+//        }
+//        else
+//        {
+//            self.tableView.isEditing = true
+//            self.navigationItem.rightBarButtonItem?.title = "Edit"
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,8 +63,38 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return habits.count
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+
+    
+//    @IBOutlet weak var checkButton: UIButton!
+//    @IBAction func checkButton(_ sender: UIButton) {
+//            let cell = tableView.cellForRow(at: IndexPath)
+//            cell?.accessoryType = .checkmark
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let row = indexPath.row
+        if tableView.isEditing == true {
+            self.performSegue(withIdentifier: "displayHabit", sender: nil)
+        } else {
+            let habit = habits[row]
+            if cell?.accessoryType == .checkmark {
+                cell?.accessoryType = .none
+                habit.days -= 1
+            } else {
+                cell?.accessoryType = .checkmark
+                habit.days += 1
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -61,37 +109,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         cell.numberOfDays.text = "\(habit.days) DAYS"
         
         return cell
-        
-//        switch indexPath.row {
-//        case 0:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "PointsCell") as! HabitsPointsCell
-////            cell.usernameLabel.text = post.poster.username
-//            
-//                return cell
-//            
-//        case 1:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell") as! AddHabitsCell
-////            let imageURL = URL(string: post.imageURL)
-////            cell.postImageView.kf.setImage(with: imageURL)
-//            
-//                return cell
-//            
-//        case 2:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "HabitCell") as! ListHabitsCell
-////            cell.delegate = self
-////            configureCell(cell, with: post)
-//            
-//                return cell
-//            
-//        default:
-//            fatalError("Error: unexpected indexPath.")
-//        }
-
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -114,6 +132,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
 //            fatalError()
 //        }
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
@@ -132,6 +151,18 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 print("+ button tapped")
             }
         }
+    }
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        if self.tableView.isEditing == false {
+            self.tableView.isEditing = true
+            editButton.title = "Done"
+        } else {
+            self.tableView.isEditing = false
+            editButton.title = "Edit"
+        }
+        
     }
     
     // TIME DICTIONARIES
@@ -174,7 +205,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         for habit in habits {
             if let name = habit.habit{
                 scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!)
-            }
+            } else { print("no") }
         }
     }
 }

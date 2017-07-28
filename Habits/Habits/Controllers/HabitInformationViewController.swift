@@ -220,7 +220,7 @@ class HabitInformationViewController: UIViewController, UIPickerViewDelegate, UI
     func scheduleAll() {
         if habitNameTextField.text != nil && chosenHour != nil && chosenMinute != nil {
             scheduleNotification(title: "Time to do Your Tasks!", body: habitNameTextField.text!, hour: rightTime(time: Int(chosenHour!)!), minute: Int(chosenMinute!)!)
-        }
+        } else { print("no") }
         print (rightTime(time: Int(chosenHour!)!))
     }
 }

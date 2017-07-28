@@ -24,46 +24,52 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-3c-C9N">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PointsCell" rowHeight="40" id="u2q-uj-5iN" userLabel="Points Cell" customClass="HabitsPointsCell" customModule="Habits" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2q-uj-5iN" id="GaE-xT-lWk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="IAZ-di-FUn">
+                                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="squ-Ev-Lqs">
+                                            <rect key="frame" x="273.5" y="20" width="76.5" height="20.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-hR-JHW" userLabel="Number of Points">
-                                                    <rect key="frame" x="342.5" y="0.0" width="17.5" height="39.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ur-Ck-tBX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ur-Ck-tBX">
-                                                    <rect key="frame" x="275.5" y="0.0" width="52" height="39.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2J-hR-JHW" userLabel="Number of Points">
+                                                    <rect key="frame" x="66" y="0.0" width="10.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="v2J-hR-JHW" firstAttribute="top" secondItem="GaE-xT-lWk" secondAttribute="top" id="2qc-MD-fMj"/>
-                                                <constraint firstItem="3Ur-Ck-tBX" firstAttribute="top" secondItem="GaE-xT-lWk" secondAttribute="top" id="Nhb-PR-uiC"/>
-                                                <constraint firstAttribute="bottom" secondItem="3Ur-Ck-tBX" secondAttribute="bottom" id="bdT-8C-84P"/>
-                                                <constraint firstItem="v2J-hR-JHW" firstAttribute="leading" secondItem="3Ur-Ck-tBX" secondAttribute="trailing" constant="15" id="hko-fg-mq3"/>
-                                                <constraint firstAttribute="bottom" secondItem="v2J-hR-JHW" secondAttribute="bottom" id="mMs-wz-3Fm"/>
-                                                <constraint firstAttribute="trailing" secondItem="v2J-hR-JHW" secondAttribute="trailing" constant="15" id="u3P-GU-MgJ"/>
-                                                <constraint firstItem="v2J-hR-JHW" firstAttribute="leading" secondItem="3Ur-Ck-tBX" secondAttribute="trailing" constant="15" id="vYd-5A-0Pq"/>
-                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="squ-Ev-Lqs" secondAttribute="trailing" constant="25" id="F2v-xs-x4O"/>
+                                        <constraint firstAttribute="height" constant="40" id="IgF-Ie-Vb8"/>
+                                        <constraint firstItem="squ-Ev-Lqs" firstAttribute="top" secondItem="IAZ-di-FUn" secondAttribute="top" constant="20" id="OQa-Kn-EYW"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PointsCell" rowHeight="40" id="u2q-uj-5iN" userLabel="Points Cell" customClass="HabitsPointsCell" customModule="Habits" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2q-uj-5iN" id="GaE-xT-lWk">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="pointsLabel" destination="v2J-hR-JHW" id="n9o-pN-iQM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCell" rowHeight="50" id="QU8-dB-hq9" userLabel="Add Cell" customClass="AddHabitsCell" customModule="Habits" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="108" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QU8-dB-hq9" id="9aL-h6-A2F">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Habits" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbH-TA-eml">
@@ -81,10 +87,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitCell" rowHeight="75" id="P6f-mg-yyc" userLabel="Habit Cell" customClass="ListHabitsCell" customModule="Habits" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="118" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="158" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P6f-mg-yyc" id="5Sl-bq-pPF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
@@ -115,7 +121,6 @@
                                         <connections>
                                             <outlet property="nameOfHabit" destination="kZn-B6-IZE" id="9we-Ot-A52"/>
                                             <outlet property="numberOfDays" destination="c19-pu-QYg" id="cd5-nG-VCS"/>
-                                            <segue destination="4zl-3m-Tl4" kind="show" identifier="displayHabit" id="lgk-Ol-ghi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -135,6 +140,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Habits" id="MkK-n5-7NH">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="EfV-Cd-QpM">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="o30-tk-EQ0" id="hNl-EW-Zvm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" style="plain" id="IpQ-WX-5fC">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qqz-xT-Jl8" userLabel="Add Button">
                                 <rect key="frame" x="313" y="7" width="46" height="30"/>
@@ -148,12 +158,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="EfV-Cd-QpM" id="jsy-Ot-46g"/>
                         <outlet property="tableView" destination="VvX-3c-C9N" id="p8I-hT-SdP"/>
+                        <segue destination="4zl-3m-Tl4" kind="show" identifier="displayHabit" id="qdW-RN-rgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNg-nv-lgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1900" y="-334.18290854572717"/>
+            <point key="canvasLocation" x="1913" y="-354"/>
         </scene>
         <!--Habits-->
         <scene sceneID="1cf-i7-9ov">
@@ -289,6 +301,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lgk-Ol-ghi"/>
+        <segue reference="qdW-RN-rgU"/>
     </inferredMetricsTieBreakers>
 </document>
