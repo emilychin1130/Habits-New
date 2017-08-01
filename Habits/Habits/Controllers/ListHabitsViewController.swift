@@ -14,6 +14,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     var habit: Habit?
  //   var numberOfDays: Int = 0
     
+    var numberOfPoints: Int = 0
+    
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
 
         self.habits = CoreDataHelper.retrieveHabits()
@@ -86,10 +88,12 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 cell?.accessoryType = .none
                 habit.days -= 1
                 habit.checked = false
+                CoreDataHelper.saveHabit()
             } else {
                 cell?.accessoryType = .checkmark
                 habit.days += 1
                 habit.checked = true
+                CoreDataHelper.saveHabit()
             }
             print(habit.days)
             print(habit.checked)
