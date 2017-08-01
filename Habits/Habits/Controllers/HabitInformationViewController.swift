@@ -12,34 +12,19 @@ import UserNotifications
 
 class HabitInformationViewController: UIViewController {
     @IBOutlet weak var habitNameTextField: UITextField!
+
+    @IBOutlet weak var notification: UISwitch!
     
     var habit: Habit?
     var chosenHour: String? = "1"
     var chosenMinute: String? = "00"
     
-//    var hourPickerData = ["Hour","1","2","3","4","5","6","7","8","9","10","11","12"]
-//    var minutePickerData = ["Minute","00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59"]
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        self.hourPicker.delegate = self
-//        self.hourPicker.dataSource = self
-//        
-//        hourPicker.tag = 0
-//        minutePicker.tag = 1
-//        
-//        self.minutePicker.delegate = self
-//        self.minutePicker.dataSource = self
-
         
         //NOTIFICATION PERMISSION
         
         initNotificationSetupCheck()
-        
-        
         
     }
     
@@ -50,8 +35,14 @@ class HabitInformationViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
-            scheduleAll()
             let habit = self.habit ?? CoreDataHelper.newHabit()
+            if habit.habit != nil {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [habit.habit!])
+            }
+            habit.notification = notification.isOn
+            if notification.isOn == true {
+                scheduleAll()
+            }
             habit.habit = habitNameTextField.text ?? ""
             habit.hour = chosenHour ?? ""
             habit.minute = chosenMinute ?? ""
@@ -68,17 +59,19 @@ class HabitInformationViewController: UIViewController {
             habitNameTextField.text = habit.habit
             chosenHour = habit.hour
             chosenMinute = habit.minute
-//            if chosenHour != "Hour" && chosenMinute != "Minute" {
-//                displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
-//            }
-//            else { displaySelectedTime.text = "" }
+            notification.isOn = habit.notification
             
-            //            noteContentTextView.text = note.content
+            if notification.isOn == true {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat =  "HH:mm"
+                let date = dateFormatter.date(from: "\(habit.hour!):\(habit.minute!)")
+                datePicker.date = date!
+            }
+
         } else {
             habitNameTextField.text = ""
             chosenHour = ""
             chosenMinute = ""
-            //            noteContentTextView.text = ""
         }
     }
     
@@ -95,54 +88,7 @@ class HabitInformationViewController: UIViewController {
         }
     }
     
-    // ALARM
-    
-    @IBOutlet weak var hourPicker: UIPickerView!
-    @IBOutlet weak var minutePicker: UIPickerView!
-    @IBOutlet weak var displaySelectedTime: UILabel!
-
-    
-    //var hourPickerData: [Int] = [Int]()
-   // var minutePickerData: [Int] = [Int]()
-    
     // PICKER
-    
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        if pickerView == hourPicker {
-//            return hourPickerData.count
-//        }
-//        else if pickerView == minutePicker {
-//            return minutePickerData.count
-//        }
-//        return 1
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        if pickerView == hourPicker {
-//            return hourPickerData[row]
-//        }
-//        else if pickerView == minutePicker {
-//            return minutePickerData[row]
-//        }
-//        return "1"
-//    }
-//    
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if pickerView == hourPicker {
-//            chosenHour = hourPickerData[row]
-//        }
-//        else if pickerView == minutePicker {
-//            chosenMinute = minutePickerData[row]
-//        }
-//        if chosenHour != "Hour" && chosenMinute != "Minute" {
-//            displaySelectedTime.text = "\(chosenHour!)  :  \(chosenMinute!)"
-//        }
-//        else { displaySelectedTime.text = "" }
-//    }
     
     
     func datePickerAction() {
@@ -154,29 +100,6 @@ class HabitInformationViewController: UIViewController {
         chosenHour = "\(hour)"
         chosenMinute = "\(minute)"
     }
-    
-    // AM PM
-    
-//    @IBOutlet weak var ampmSelector: UISegmentedControl!
-//    
-//    func rightTime(time: Int) -> Int {
-//        switch ampmSelector.selectedSegmentIndex {
-//        case 0:
-//            if time != 12 {
-//                return time
-//            } else {
-//                return (time + 12)
-//            }
-//        case 1:
-//            if time != 12 {
-//                return (time + 12)
-//            } else {
-//                return time
-//            }
-//        default:
-//            return time
-//        }
-//    }
     
     // NOTIFICATION
     
@@ -199,8 +122,6 @@ class HabitInformationViewController: UIViewController {
         if chosenMinute != nil {
             minuteDictionary["\(habitNameTextField.text)"] = Int(chosenMinute!)
         }
-        print(hourDictionary)
-        print(minuteDictionary)
     }
     
     func scheduleNotification(title: String, body: String, hour: Int, minute: Int, identifier: String) {
@@ -234,15 +155,8 @@ class HabitInformationViewController: UIViewController {
         datePickerAction()
         
         if habitNameTextField.text != nil && chosenHour != nil && chosenMinute != nil {
-            print("yay")
-            print(habitNameTextField.text!)
-            print(Int(chosenHour!)!)
-            print(Int(chosenMinute!)!)
             scheduleNotification(title: "Time to do Your Tasks!", body: habitNameTextField.text!, hour: Int(chosenHour!)!, minute: Int(chosenMinute!)!, identifier: habitNameTextField.text!)
         } else { print("no") }
-//        print(hour)
-//        print(minute)
-   //     print (rightTime(time: Int(chosenHour!)!))
     }
 }
 

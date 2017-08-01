@@ -159,6 +159,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="EfV-Cd-QpM" id="jsy-Ot-46g"/>
+                        <outlet property="numberOfPointsLabel" destination="v2J-hR-JHW" id="6cR-2f-ZMo"/>
                         <outlet property="tableView" destination="VvX-3c-C9N" id="p8I-hT-SdP"/>
                         <segue destination="4zl-3m-Tl4" kind="show" identifier="displayHabit" id="qdW-RN-rgU"/>
                     </connections>
@@ -243,6 +244,7 @@
                     <connections>
                         <outlet property="datePicker" destination="zJr-8v-Mck" id="dlb-WV-fY9"/>
                         <outlet property="habitNameTextField" destination="nJM-UY-LhW" id="lOn-BZ-1pv"/>
+                        <outlet property="notification" destination="aqX-uJ-cwr" id="A8r-L3-qbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oj3-yG-6cn" userLabel="First Responder" sceneMemberID="firstResponder"/>

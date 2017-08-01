@@ -6,8 +6,10 @@
         <attribute name="habit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notification" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Habit" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Habit" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

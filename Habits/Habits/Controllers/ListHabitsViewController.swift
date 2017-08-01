@@ -22,6 +22,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var numberOfPointsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,22 +33,10 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = true
         
+        numberOfPointsLabel.text = "\(habit?.points)"
+        
         scheduleAll()
     }
-    
-//    func showEditing(sender: UIBarButtonItem)
-//    {
-//        if(self.tableView.isEditing == true)
-//        {
-//            self.tableView.isEditing = false
-//            self.navigationItem.rightBarButtonItem?.title = "Done"
-//        }
-//        else
-//        {
-//            self.tableView.isEditing = true
-//            self.navigationItem.rightBarButtonItem?.title = "Edit"
-//        }
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -89,16 +78,20 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 habit.days -= 1
                 habit.checked = false
                 CoreDataHelper.saveHabit()
+                numberOfPoints -= (1 + Int(habit.days))
             } else {
                 cell?.accessoryType = .checkmark
                 habit.days += 1
                 habit.checked = true
                 CoreDataHelper.saveHabit()
+                numberOfPoints += Int(habit.days)
             }
-            print(habit.days)
-            print(habit.checked)
+            print(numberOfPoints)
             self.tableView.reloadData()
         }
+        habit?.points = Int64(numberOfPoints)
+        print(habit?.points)
+        CoreDataHelper.saveHabit()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,8 +111,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         {
             cell.accessoryType = .none
         }
-        
-        print(habit.days)
         
         return cell
     }
@@ -172,9 +163,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     func addToDictionaries() {
         for habit in habits {
             if habit.hour != nil {
-                print(habit.hour)
                 hourDictionary[habit.habit!] = Int(habit.hour!)
-                print(hourDictionary[habit.habit!])
             }
         }
         for habit in habits {
@@ -182,8 +171,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 minuteDictionary[habit.habit!] = Int(habit.minute!)
             }
         }
-        print(hourDictionary)
-        print(minuteDictionary)
     }
     
     func scheduleNotification(title: String, body: String, hour: Int, minute: Int, identifier: String) {
@@ -205,7 +192,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         addToDictionaries()
         for habit in habits {
             if let name = habit.habit {
-                if hourDictionary[name] != nil && minuteDictionary[name] != nil {
+                if hourDictionary[name] != nil && minuteDictionary[name] != nil && habit.notification == true {
                     scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
                 }
                 else {

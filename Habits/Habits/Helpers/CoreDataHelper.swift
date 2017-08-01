@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
+import UserNotifications
 
 class CoreDataHelper {
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -30,6 +31,7 @@ class CoreDataHelper {
     
     static func delete(habit: Habit) {
         managedContext.delete(habit)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [habit.habit!])
         saveHabit()
     }
     
