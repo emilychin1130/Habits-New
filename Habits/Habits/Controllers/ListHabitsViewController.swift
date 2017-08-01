@@ -11,6 +11,9 @@ import UIKit
 import UserNotifications
 
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    var habit: Habit?
+ //   var numberOfDays: Int = 0
+    
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
 
         self.habits = CoreDataHelper.retrieveHabits()
@@ -26,8 +29,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = true
-        
-  //      self.editButtonItem()
         
         scheduleAll()
     }
@@ -56,6 +57,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    // TABLE VIEW
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             CoreDataHelper.delete(habit: habits[indexPath.row])
@@ -72,14 +75,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         return true
     }
     
-
-    
-//    @IBOutlet weak var checkButton: UIButton!
-//    @IBAction func checkButton(_ sender: UIButton) {
-//            let cell = tableView.cellForRow(at: IndexPath)
-//            cell?.accessoryType = .checkmark
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         let row = indexPath.row
@@ -90,10 +85,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             if cell?.accessoryType == .checkmark {
                 cell?.accessoryType = .none
                 habit.days -= 1
+                habit.checked = false
             } else {
                 cell?.accessoryType = .checkmark
                 habit.days += 1
+                habit.checked = true
             }
+            print(habit.days)
+            print(habit.checked)
+            self.tableView.reloadData()
         }
     }
     
@@ -104,9 +104,18 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         let habit = habits[row]
         
-        cell.nameOfHabit.text = habit.habit
+        cell.nameOfHabit.text = "\(habit.habit!) | \(habit.hour!):\(habit.minute!)"
         
         cell.numberOfDays.text = "\(habit.days) DAYS"
+        
+        if habit.checked == true {
+            cell.accessoryType = .checkmark
+        } else
+        {
+            cell.accessoryType = .none
+        }
+        
+        print(habit.days)
         
         return cell
     }
@@ -117,20 +126,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 75
-        
-//        switch indexPath.row {
-//        case 0:
-//            return 40
-//            
-//        case 1:
-//            return 50
-//            
-//        case 2:
-//            return 75
-//            
-//        default:
-//            fatalError()
-//        }
     }
 
     
@@ -173,7 +168,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     func addToDictionaries() {
         for habit in habits {
             if habit.hour != nil {
+                print(habit.hour)
                 hourDictionary[habit.habit!] = Int(habit.hour!)
+                print(hourDictionary[habit.habit!])
             }
         }
         for habit in habits {
@@ -185,7 +182,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         print(minuteDictionary)
     }
     
-    func scheduleNotification(title: String, body: String, hour: Int, minute: Int) {
+    func scheduleNotification(title: String, body: String, hour: Int, minute: Int, identifier: String) {
         
         let content = UNMutableNotificationContent()
         content.title = title
@@ -196,17 +193,23 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         dateComponents.minute = minute
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let request = UNNotificationRequest(identifier: "10.second.message", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
     func scheduleAll() {
         addToDictionaries()
         for habit in habits {
-            if let name = habit.habit{
-                scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!)
-            } else { print("no") }
+            if let name = habit.habit {
+                if hourDictionary[name] != nil && minuteDictionary[name] != nil {
+                    scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
+                }
+                else {
+                    print("no2")
+                }
+            } else { print("no1") }
         }
     }
+
 }
 
