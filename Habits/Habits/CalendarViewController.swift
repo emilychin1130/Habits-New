@@ -10,7 +10,7 @@ import Foundation
 import JTAppleCalendar
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, UITableViewDelegate, UITableViewDataSource { //add datasource later
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
@@ -66,7 +66,42 @@ class CalendarViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // TABLE VIEW
     
+    @IBOutlet weak var habitsDoneTableView: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3 // NUMBER OF HABITS DONE
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HabitsDoneCell") as! HabitsDoneTableViewCell
+        
+//        let row = indexPath.row
+//        
+//        let habit = habits[row]
+//        
+//        cell.nameOfHabit.text = "\(habit.habit!) | \(habit.hour!):\(habit.minute!)"
+//        
+//        cell.numberOfDays.text = "\(habit.days) DAYS"
+//        
+//        if habit.checked == true {
+//            cell.accessoryType = .checkmark
+//        } else
+//        {
+//            cell.accessoryType = .none
+//        }
+//        
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
 }
 
 extension CalendarViewController: JTAppleCalendarViewDataSource {

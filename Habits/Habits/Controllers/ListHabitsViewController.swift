@@ -29,13 +29,16 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
 
         habits = CoreDataHelper.retrieveHabits()
         
+        reset()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = true
         
-        numberOfPointsLabel.text = "\(habit?.points)"
+        numberOfPointsLabel.text = "\(numberOfPoints)"
         
         scheduleAll()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -196,11 +199,35 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                     scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
                 }
                 else {
-                    print("no2")
                 }
             } else { print("no1") }
         }
     }
+    
+    // RESET AT MIDNIGHT
+    
+    func reset() {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        print("hours = \(hour):\(minutes):\(seconds)")
+        if true { //"\(hour):\(minutes)" != "00:00:00" {
+            print("1")
+            let cells = self.tableView.visibleCells as! Array<UITableViewCell>
+            for ListHabitsCell in cells {
+                ListHabitsCell.accessoryType = .none
+                habit?.checked = false
+                CoreDataHelper.saveHabit()
+            }
+        }
+
+         // idk if this is right
+    }
+
+
 
 }
 
