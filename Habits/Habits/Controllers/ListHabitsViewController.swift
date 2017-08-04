@@ -11,7 +11,7 @@ import UIKit
 import UserNotifications
 
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var habit: Habit?
+//    var habit: Habit?
  //   var numberOfDays: Int = 0
     
     var numberOfPoints: Int = 0
@@ -26,6 +26,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .lightContent
 
         habits = CoreDataHelper.retrieveHabits()
         
@@ -90,10 +91,11 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 numberOfPoints += Int(habit.days)
             }
             print(numberOfPoints)
+            self.numberOfPointsLabel.reloadInputViews()
             self.tableView.reloadData()
         }
-        habit?.points = Int64(numberOfPoints)
-        print(habit?.points)
+//        habit?.points = Int64(numberOfPoints)
+//        print(habit?.points)
         CoreDataHelper.saveHabit()
     }
     
@@ -214,17 +216,17 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         print("hours = \(hour):\(minutes):\(seconds)")
-        if true { //"\(hour):\(minutes)" != "00:00:00" {
-            print("1")
-            let cells = self.tableView.visibleCells as! Array<UITableViewCell>
+        if "\(hour):\(minutes)" == "0:0:0" {
+            let cells = self.tableView.visibleCells
             for ListHabitsCell in cells {
                 ListHabitsCell.accessoryType = .none
-                habit?.checked = false
-                CoreDataHelper.saveHabit()
+                for x in 0 ..< habits.count {
+                    habits[x].checked = false
+                }
             }
-        }
+            CoreDataHelper.saveHabit()
 
-         // idk if this is right
+        }
     }
 
 

@@ -18,14 +18,18 @@ class HabitInformationViewController: UIViewController {
     var habit: Habit?
     var chosenHour: String? = "1"
     var chosenMinute: String? = "00"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.statusBarStyle = .lightContent
         
         //NOTIFICATION PERMISSION
         
         initNotificationSetupCheck()
         
+        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+
     }
     
     override func didReceiveMemoryWarning() {
