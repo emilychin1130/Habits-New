@@ -41,6 +41,28 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         scheduleAll()
         
+//        if(timer != nil)
+//        {
+//            timer?.invalidate()
+//        }
+//        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
+//        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+//        
+//        if(otherTimer != nil)
+//        {
+//            otherTimer?.invalidate()
+//        }
+//        otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
+//        RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if(timer != nil)
         {
             timer?.invalidate()
@@ -54,19 +76,12 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         }
         otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
         RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timer?.invalidate()
-        timer = nil
-        otherTimer?.invalidate()
-        otherTimer = nil
+//        timer?.invalidate()
+//        otherTimer?.invalidate()
     }
     
     var habits = [Habit]() {

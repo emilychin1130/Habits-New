@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1387937B5672ABE8CB0C9E93 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */; };
+		A1228B961F35207100C84904 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1228B951F35207100C84904 /* Store.storyboard */; };
+		A1228B9A1F35283D00C84904 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1228B991F35283D00C84904 /* ShopTableViewController.swift */; };
 		A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C59FF1F2906D800A2F152 /* Calendar.storyboard */; };
 		A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A011F29081600A2F152 /* CalendarViewController.swift */; };
 		A13C5A041F29141800A2F152 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A031F29141800A2F152 /* CalendarCell.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
 		8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
+		A1228B951F35207100C84904 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Store.storyboard; path = Storyboards/Store.storyboard; sourceTree = "<group>"; };
+		A1228B991F35283D00C84904 /* ShopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShopTableViewController.swift; path = Controllers/ShopTableViewController.swift; sourceTree = "<group>"; };
 		A13C59FF1F2906D800A2F152 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Calendar.storyboard; path = Storyboards/Calendar.storyboard; sourceTree = "<group>"; };
 		A13C5A011F29081600A2F152 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A13C5A031F29141800A2F152 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Views/CalendarCell.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 			children = (
 				A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */,
 				A1B0AB511F1D336900205600 /* Main.storyboard */,
+				A1228B951F35207100C84904 /* Store.storyboard */,
 				A13C59FF1F2906D800A2F152 /* Calendar.storyboard */,
 				A1B0AB4F1F1D334800205600 /* Habits.storyboard */,
 			);
@@ -128,6 +133,7 @@
 				A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */,
 				A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */,
 				A13C5A011F29081600A2F152 /* CalendarViewController.swift */,
+				A1228B991F35283D00C84904 /* ShopTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 				A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */,
 				A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */,
 				A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */,
+				A1228B961F35207100C84904 /* Store.storyboard in Resources */,
 				A1B0AB521F1D336900205600 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1228B9A1F35283D00C84904 /* ShopTableViewController.swift in Sources */,
 				A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */,
 				A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */,
 				A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */,

@@ -9,25 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Store-->
-        <scene sceneID="vXv-Fb-pYO">
-            <objects>
-                <viewController id="LEQ-wQ-biN" userLabel="Store" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oE2-J1-dsm"/>
-                        <viewControllerLayoutGuide type="bottom" id="wtx-S5-ZcF"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wZY-7F-2fv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yuK-er-0yp"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TYo-8P-aDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="956" y="1090"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dwp-yl-1af">
             <objects>
@@ -40,7 +21,7 @@
                     <connections>
                         <segue destination="i2l-F7-iDs" kind="relationship" relationship="viewControllers" id="dq5-Fh-0KA"/>
                         <segue destination="bzb-Nw-eDV" kind="relationship" relationship="viewControllers" id="ooU-Dl-WJt"/>
-                        <segue destination="LEQ-wQ-biN" kind="relationship" relationship="viewControllers" id="21H-Er-2PS"/>
+                        <segue destination="TW4-eE-X5F" kind="relationship" relationship="viewControllers" id="21H-Er-2PS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCq-R6-SPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -66,6 +47,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsG-PA-Zdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="960.79999999999995" y="320.68965517241384"/>
+        </scene>
+        <!--Store-->
+        <scene sceneID="u3p-dX-vVf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Store" id="TW4-eE-X5F" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="CK7-8D-0tb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mrx-tk-9PT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="1089.8050974512744"/>
         </scene>
     </scenes>
 </document>
