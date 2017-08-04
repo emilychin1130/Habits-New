@@ -13,7 +13,8 @@ import UserNotifications
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    var habit: Habit?
  //   var numberOfDays: Int = 0
-    
+    var timer: Timer?
+    var otherTimer: Timer?
     var numberOfPoints: Int = 0
     
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
@@ -40,16 +41,42 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         scheduleAll()
         
+        if(timer != nil)
+        {
+            timer?.invalidate()
+        }
+        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        
+        if(otherTimer != nil)
+        {
+            otherTimer?.invalidate()
+        }
+        otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
+        RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+        timer = nil
+        otherTimer?.invalidate()
+        otherTimer = nil
+    }
+    
     var habits = [Habit]() {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    func setPoints() {
+        numberOfPointsLabel.text = "\(numberOfPoints)"
     }
     
     // TABLE VIEW
@@ -216,7 +243,14 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         print("hours = \(hour):\(minutes):\(seconds)")
-        if "\(hour):\(minutes)" == "0:0:0" {
+        if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
+            for x in 0 ..< habits.count {
+                if habits[x].checked == false {
+                    habits[x].days = 0
+                    CoreDataHelper.saveHabit()
+                    self.tableView.reloadData()
+                }
+            }
             let cells = self.tableView.visibleCells
             for ListHabitsCell in cells {
                 ListHabitsCell.accessoryType = .none
@@ -225,8 +259,11 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
             CoreDataHelper.saveHabit()
-
+            print("yay")
         }
+//        let cal = Calendar(identifier: .gregorian)
+//        let newDate = cal.startOfDay(for: date)
+//        print(newDate)
     }
 
 
