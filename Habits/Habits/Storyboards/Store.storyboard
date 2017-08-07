@@ -12,7 +12,7 @@
         <!--Shop-->
         <scene sceneID="5yI-Q6-4xW">
             <objects>
-                <tableViewController id="76C-iz-hDf" sceneMemberID="viewController">
+                <tableViewController id="76C-iz-hDf" customClass="ShopTableViewController" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yLu-nT-J7R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +113,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Shop" id="4oU-JW-55Q"/>
+                    <connections>
+                        <outlet property="shopTableView" destination="yLu-nT-J7R" id="Xei-jj-g5C"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCe-Zc-9dQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

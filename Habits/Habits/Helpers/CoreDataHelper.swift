@@ -45,4 +45,28 @@ class CoreDataHelper {
         }
         return []
     }
+    
+    static func newGeneral() -> General {
+        let general = NSEntityDescription.insertNewObject(forEntityName: "General", into: managedContext) as! General
+        return general
+    }
+    
+    static func saveGeneral() {
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save \(error)")
+        }
+    }
+    
+    static func retrieveGeneral() -> [General] {
+        let fetchRequest = NSFetchRequest<General>(entityName: "General")
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            return results
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
+        }
+        return []
+    }
 }

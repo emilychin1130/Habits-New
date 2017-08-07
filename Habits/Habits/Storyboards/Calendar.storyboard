@@ -164,11 +164,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HabitsDoneCell" id="50w-MU-vYO" customClass="HabitsDoneTableViewCell" customModule="Habits" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="50w-MU-vYO" id="k0N-ne-6Q6">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="50w-MU-vYO" id="k0N-ne-6Q6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="habit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM5-jm-pSL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="testing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM5-jm-pSL">
                                                     <rect key="frame" x="28" y="11" width="42" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="zZe-ju-Xbc"/>
@@ -181,6 +181,7 @@
                                             <constraints>
                                                 <constraint firstItem="uM5-jm-pSL" firstAttribute="leading" secondItem="k0N-ne-6Q6" secondAttribute="leadingMargin" constant="20" id="UgS-fs-vq8"/>
                                                 <constraint firstItem="uM5-jm-pSL" firstAttribute="centerY" secondItem="k0N-ne-6Q6" secondAttribute="centerY" id="Xeg-m6-vCw"/>
+                                                <constraint firstAttribute="trailing" secondItem="uM5-jm-pSL" secondAttribute="trailing" constant="20" id="ZYq-dV-Hq0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

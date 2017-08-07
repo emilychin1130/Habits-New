@@ -15,7 +15,10 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
  //   var numberOfDays: Int = 0
     var timer: Timer?
     var otherTimer: Timer?
+    var setUpGeneralTimer: Timer?
     var numberOfPoints: Int = 0
+    
+//    var general = General()
     
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
 
@@ -30,6 +33,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         UIApplication.shared.statusBarStyle = .lightContent
 
         habits = CoreDataHelper.retrieveHabits()
+        
+        setUpGeneral()
         
         reset()
         
@@ -63,6 +68,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // CONTINUOUSLY RUN RESET AND SETPOINTS AND GENERAL
+        
         if(timer != nil)
         {
             timer?.invalidate()
@@ -76,10 +84,19 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         }
         otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
         RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
+        
+        if(setUpGeneralTimer != nil)
+        {
+            setUpGeneralTimer?.invalidate()
+        }
+        setUpGeneralTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setUpGeneral), userInfo: nil, repeats: true)
+        RunLoop.current.add(setUpGeneralTimer!, forMode: RunLoopMode.commonModes)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        general.points = Int64(numberOfPoints) ?? 0
+//        CoreDataHelper.saveGeneral()
 //        timer?.invalidate()
 //        otherTimer?.invalidate()
     }
@@ -94,6 +111,30 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         numberOfPointsLabel.text = "\(numberOfPoints)"
     }
     
+    // SETUP GENERAL
+    
+    func setUpGeneral() {
+        let list = CoreDataHelper.retrieveGeneral()
+        if list.count == 0 {
+            let general = CoreDataHelper.newGeneral()
+            general.points = 0
+            general.rows = 0
+        } else if list.count == 1 {
+            let general = CoreDataHelper.retrieveGeneral()
+            numberOfPoints = Int(general[0].points)
+            self.numberOfPointsLabel.reloadInputViews()
+        }
+        CoreDataHelper.saveGeneral()
+    }
+    
+    func updateGeneral() {
+        let general = CoreDataHelper.retrieveGeneral()
+        general[0].points = Int64(numberOfPoints)
+        CoreDataHelper.saveGeneral()
+        numberOfPointsLabel.text = "\(numberOfPoints)"
+        self.numberOfPointsLabel.reloadInputViews()
+    }
+    
     // TABLE VIEW
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -105,7 +146,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return habits.count
+        let general = CoreDataHelper.retrieveGeneral()
+        return habits.count // return general.rows
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -257,7 +299,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
-        print("hours = \(hour):\(minutes):\(seconds)")
+       // print("hours = \(hour):\(minutes):\(seconds)")
         if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {

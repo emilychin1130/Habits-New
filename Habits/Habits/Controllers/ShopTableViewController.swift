@@ -6,9 +6,12 @@
 //  Copyright © 2017 Emily Chin. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class ShopTableViewController: UITableViewController {
+    @IBOutlet var shopTableView: UITableView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +32,40 @@ class ShopTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("hi")
+        
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        if indexPath.row == 0 {
+            print("bye")
+            print(general.points)
+            print(general.rows)
+            general.points -= 15
+            general.rows += 1
+            print(general.points)
+            print(general.rows)
+            CoreDataHelper.saveGeneral()
+        }
+//        if indexPath.row == 1 {
+//            general[0].points -= 35
+//            general[0].rows += 3
+//            CoreDataHelper.saveGeneral()
+//        }
+//        if indexPath.row == 2 {
+//            general[0].points -= 60
+//            general[0].rows += 5
+//            CoreDataHelper.saveGeneral()
+//        }
     }
 
     /*
