@@ -41,31 +41,25 @@ class ShopTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hi")
         
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
         if indexPath.row == 0 {
-            print("bye")
-            print(general.points)
-            print(general.rows)
             general.points -= 15
             general.rows += 1
-            print(general.points)
-            print(general.rows)
             CoreDataHelper.saveGeneral()
         }
-//        if indexPath.row == 1 {
-//            general[0].points -= 35
-//            general[0].rows += 3
-//            CoreDataHelper.saveGeneral()
-//        }
-//        if indexPath.row == 2 {
-//            general[0].points -= 60
-//            general[0].rows += 5
-//            CoreDataHelper.saveGeneral()
-//        }
+        if indexPath.row == 1 {
+            general.points -= 35
+            general.rows += 3
+            CoreDataHelper.saveGeneral()
+        }
+        if indexPath.row == 2 {
+            general.points -= 60
+            general.rows += 5
+            CoreDataHelper.saveGeneral()
+        }
     }
 
     /*

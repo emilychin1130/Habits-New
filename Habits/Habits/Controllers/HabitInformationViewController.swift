@@ -39,6 +39,15 @@ class HabitInformationViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
+            let habits = CoreDataHelper.retrieveHabits()
+            let list = CoreDataHelper.retrieveGeneral()
+            let general = list[0]
+            if habits.count >= Int(general.rows) {
+                print("no") //alert saying no more
+                let alert = UIAlertController(title: "No More Slots", message: "Buy more at the shop or delete some existing habits!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                self.present(alert, animated: true, completion: nil)
+            } else {
             let habit = self.habit ?? CoreDataHelper.newHabit()
             if habit.habit != nil {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [habit.habit!])
@@ -52,7 +61,7 @@ class HabitInformationViewController: UIViewController {
             habit.minute = chosenMinute ?? ""
     //      habit.days =
             CoreDataHelper.saveHabit()
-
+            }
         }
     }
     

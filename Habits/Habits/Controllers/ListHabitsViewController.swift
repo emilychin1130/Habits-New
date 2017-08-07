@@ -15,8 +15,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
  //   var numberOfDays: Int = 0
     var timer: Timer?
     var otherTimer: Timer?
-    var setUpGeneralTimer: Timer?
-    var numberOfPoints: Int = 0
+    var reloadTimer: Timer?
+ //   var numberOfPoints: Int = 0
     
 //    var general = General()
     
@@ -42,9 +42,16 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.allowsSelectionDuringEditing = true
         
-        numberOfPointsLabel.text = "\(numberOfPoints)"
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        numberOfPointsLabel.text = "\(general.points)"
         
         scheduleAll()
+        
+        let general1 = CoreDataHelper.retrieveGeneral()
+        
+        print(general1[0].rows)
         
 //        if(timer != nil)
 //        {
@@ -85,12 +92,12 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
         RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
         
-        if(setUpGeneralTimer != nil)
+        if(reloadTimer != nil)
         {
-            setUpGeneralTimer?.invalidate()
+            reloadTimer?.invalidate()
         }
-        setUpGeneralTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setUpGeneral), userInfo: nil, repeats: true)
-        RunLoop.current.add(setUpGeneralTimer!, forMode: RunLoopMode.commonModes)
+        reloadTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reload), userInfo: nil, repeats: true)
+        RunLoop.current.add(reloadTimer!, forMode: RunLoopMode.commonModes)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -108,10 +115,24 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func setPoints() {
-        numberOfPointsLabel.text = "\(numberOfPoints)"
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        numberOfPointsLabel.text = "\(general.points)"
     }
     
     // SETUP GENERAL
+    
+    func reload() {
+        print("hi")
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+ //       general.points = Int64(numberOfPoints)
+    //    CoreDataHelper.saveGeneral()
+        numberOfPointsLabel.text = "\(general.points)"
+        self.numberOfPointsLabel.reloadInputViews()
+ //       general.points = Int64(numberOfPoints)
+        CoreDataHelper.saveGeneral()
+    }
     
     func setUpGeneral() {
         let list = CoreDataHelper.retrieveGeneral()
@@ -121,7 +142,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             general.rows = 0
         } else if list.count == 1 {
             let general = CoreDataHelper.retrieveGeneral()
-            numberOfPoints = Int(general[0].points)
+   //         numberOfPoints = Int(general[0].points)
             self.numberOfPointsLabel.reloadInputViews()
         }
         CoreDataHelper.saveGeneral()
@@ -129,10 +150,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     func updateGeneral() {
         let general = CoreDataHelper.retrieveGeneral()
-        general[0].points = Int64(numberOfPoints)
+ //       general[0].points = Int64(numberOfPoints)
         CoreDataHelper.saveGeneral()
-        numberOfPointsLabel.text = "\(numberOfPoints)"
-        self.numberOfPointsLabel.reloadInputViews()
+ //       self.numberOfPointsLabel.reloadInputViews()
     }
     
     // TABLE VIEW
@@ -147,7 +167,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let general = CoreDataHelper.retrieveGeneral()
-        return habits.count // return general.rows
+        return habits.count // (3 + Int(general[0].rows))
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -161,20 +181,22 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             self.performSegue(withIdentifier: "displayHabit", sender: nil)
         } else {
             let habit = habits[row]
+            let list = CoreDataHelper.retrieveGeneral()
+            let general = list[0]
             if cell?.accessoryType == .checkmark {
                 cell?.accessoryType = .none
                 habit.days -= 1
                 habit.checked = false
                 CoreDataHelper.saveHabit()
-                numberOfPoints -= (1 + Int(habit.days))
+                general.points -= (1 + Int(habit.days))
             } else {
                 cell?.accessoryType = .checkmark
                 habit.days += 1
                 habit.checked = true
                 CoreDataHelper.saveHabit()
-                numberOfPoints += Int(habit.days)
+                general.points += Int(habit.days)
             }
-            print(numberOfPoints)
+  //          print(numberOfPoints)
             self.numberOfPointsLabel.reloadInputViews()
             self.tableView.reloadData()
         }
