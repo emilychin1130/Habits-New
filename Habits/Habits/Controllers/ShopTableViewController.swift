@@ -47,18 +47,39 @@ class ShopTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
             general.points -= 15
+            if general.points < 0 {
+                let alert = UIAlertController(title: "", message: "Not enough points!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                self.present(alert, animated: true, completion: nil)
+                general.points += 15
+            } else {
             general.rows += 1
             CoreDataHelper.saveGeneral()
+            }
         }
         if indexPath.row == 1 {
             general.points -= 35
+            if general.points < 0 {
+                let alert = UIAlertController(title: "", message: "Not enough points!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                self.present(alert, animated: true, completion: nil)
+                general.points += 35
+            } else {
             general.rows += 3
             CoreDataHelper.saveGeneral()
+            }
         }
         if indexPath.row == 2 {
             general.points -= 60
+            if general.points < 0 {
+                let alert = UIAlertController(title: "", message: "Not enough points!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                self.present(alert, animated: true, completion: nil)
+                general.points += 60
+            } else {
             general.rows += 5
             CoreDataHelper.saveGeneral()
+            }
         }
     }
 

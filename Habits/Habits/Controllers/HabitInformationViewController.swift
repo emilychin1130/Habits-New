@@ -27,8 +27,6 @@ class HabitInformationViewController: UIViewController {
         //NOTIFICATION PERMISSION
         
         initNotificationSetupCheck()
-        
-        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
 
     }
     

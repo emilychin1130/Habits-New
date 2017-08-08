@@ -47,6 +47,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         numberOfPointsLabel.text = "\(general.points)"
         
+        CoreDataHelper.saveGeneral()
+        
         scheduleAll()
         
         let general1 = CoreDataHelper.retrieveGeneral()
@@ -123,7 +125,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     // SETUP GENERAL
     
     func reload() {
-        print("hi")
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
  //       general.points = Int64(numberOfPoints)
@@ -163,7 +164,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             habits = CoreDataHelper.retrieveHabits()
         }
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let general = CoreDataHelper.retrieveGeneral()
@@ -212,7 +212,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         let habit = habits[row]
         
-        cell.nameOfHabit.text = "\(habit.habit!) | \(habit.hour!):\(habit.minute!)"
+        cell.nameOfHabit.text = "\(habit.habit!)"
         
         cell.numberOfDays.text = "\(habit.days) DAYS"
         
@@ -315,13 +315,36 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     // RESET AT MIDNIGHT
     
     func reset() {
+        var arrayOfHabits = [String]()
+        
+        for habit in habits {
+            if habit.checked {
+                arrayOfHabits.append(habit.habit!)
+            }
+        }
+        
         let date = Date()
         let calendar = Calendar.current
-        
+
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
-       // print("hours = \(hour):\(minutes):\(seconds)")
+        
+        let today = "\(year) \(month) \(day)"
+        
+        print(today)
+        print(date)
+
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        general.done = [today:arrayOfHabits]
+        
+        CoreDataHelper.saveGeneral()
+        
         if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {

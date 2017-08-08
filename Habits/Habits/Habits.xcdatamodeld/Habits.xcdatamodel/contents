@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="General" representedClassName="General" syncable="YES" codeGenerationType="class">
+        <attribute name="done" optional="YES" attributeType="Transformable" customClassName="[String:[String]]" syncable="YES"/>
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rows" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Habit" representedClassName="Habit" syncable="YES" codeGenerationType="class">
         <attribute name="checked" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="days" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="didDoIt" optional="YES" attributeType="Transformable" customClassName="[String: [String]]" syncable="YES"/>
         <attribute name="habit" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hour" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="minute" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,7 +16,7 @@
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Habit" positionX="-63" positionY="-18" width="128" height="150"/>
-        <element name="General" positionX="-63" positionY="36" width="128" height="75"/>
+        <element name="Habit" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="General" positionX="-63" positionY="36" width="128" height="88"/>
     </elements>
 </model>

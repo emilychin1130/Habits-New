@@ -15,8 +15,10 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var month: UILabel!
     
+    var selectedDate = ""
+    
     let outsideMonthColor = UIColor(colorWithHexValue: 0xB3B3B3)
-    let monthColor = UIColor.white
+    let monthColor = UIColor.black
 //    let selectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
 //    let currentDateSelectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
     
@@ -77,30 +79,34 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     // TABLE VIEW
     
     @IBOutlet weak var habitsDoneTableView: UITableView!
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 // NUMBER OF HABITS DONE
-    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitsDoneCell") as! HabitsDoneTableViewCell
         
-//        let row = indexPath.row
-//        
-//        let habit = habits[row]
-//        
-//        cell.nameOfHabit.text = "\(habit.habit!) | \(habit.hour!):\(habit.minute!)"
-//        
-//        cell.numberOfDays.text = "\(habit.days) DAYS"
-//        
-//        if habit.checked == true {
-//            cell.accessoryType = .checkmark
-//        } else
-//        {
-//            cell.accessoryType = .none
-//        }
-//        
+        let row = indexPath.row
+        
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+
+        let today = "\(year) \(month) \(day)"
+        
+        cell.habitDoneLabel.text = general.done?[today]?[row]
+        
+   //     self.habitsDoneTableView.reloadData()
+    
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3 // arrayOfHabits.count // NUMBER OF HABITS DONE
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -147,6 +153,15 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let validCell = cell as? CalendarCell else { return }
         validCell.selectedView.isHidden = false
+//        
+//        let cell1 = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: IndexPath) as! CalendarCell
+//        
+//        formatter.dateFormat = "yyyy MM dd"
+//        formatter.timeZone = Calendar.current.timeZone
+//        formatter.locale = Calendar.current.locale
+//        
+//        var selectedDate = formatter.date(from: cell1.dateLabel.text!)
+//        print(selectedDate)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
