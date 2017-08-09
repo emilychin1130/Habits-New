@@ -53,7 +53,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         let general1 = CoreDataHelper.retrieveGeneral()
         
-        print(general1[0].rows)
+//        print(general1[0].rows)
         
 //        if(timer != nil)
 //        {
@@ -140,7 +140,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         if list.count == 0 {
             let general = CoreDataHelper.newGeneral()
             general.points = 0
-            general.rows = 0
+            general.rows = 3
         } else if list.count == 1 {
             let general = CoreDataHelper.retrieveGeneral()
    //         numberOfPoints = Int(general[0].points)
@@ -167,7 +167,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let general = CoreDataHelper.retrieveGeneral()
-        return habits.count // (3 + Int(general[0].rows))
+        return habits.count
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -250,6 +250,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 
             } else if identifier == "addHabit" {
                 print("+ button tapped")
+                let list = CoreDataHelper.retrieveGeneral()
+                let general = list[0]
+                if habits.count >= Int(general.rows) {
+                    print("no") //alert saying no more
+                    
+                        let alert = UIAlertController(title: "No More Slots", message: "Buy more at the shop or delete some existing habits!", preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                        self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -323,6 +332,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         
+//        print(arrayOfHabits)
+        
         let date = Date()
         let calendar = Calendar.current
 
@@ -335,17 +346,26 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         let today = "\(year) \(month) \(day)"
         
-        print(today)
-        print(date)
+//        print(today)
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let selectedDate = formatter.string(from: date)
+        
+//        print(selectedDate)
 
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
-        general.done = [today:arrayOfHabits]
+        general.done = [selectedDate:arrayOfHabits]
+//        print(general.done)
         
         CoreDataHelper.saveGeneral()
         
-        if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
+        if "\(hour):\(minutes):\(seconds)" == "14:20:0" {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {
                     habits[x].days = 0

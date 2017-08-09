@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1387937B5672ABE8CB0C9E93 /* Pods_Habits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */; };
+		A11A56C21F3AF7BE00E3321C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A11A56C11F3AF7BE00E3321C /* Launch Screen.storyboard */; };
 		A1228B961F35207100C84904 /* Store.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1228B951F35207100C84904 /* Store.storyboard */; };
 		A1228B9A1F35283D00C84904 /* ShopTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1228B991F35283D00C84904 /* ShopTableViewController.swift */; };
 		A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A13C59FF1F2906D800A2F152 /* Calendar.storyboard */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.release.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.release.xcconfig"; sourceTree = "<group>"; };
 		8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Habits.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Habits/Pods-Habits.debug.xcconfig"; sourceTree = "<group>"; };
+		A11A56C11F3AF7BE00E3321C /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "Storyboards/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A1228B951F35207100C84904 /* Store.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Store.storyboard; path = Storyboards/Store.storyboard; sourceTree = "<group>"; };
 		A1228B991F35283D00C84904 /* ShopTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShopTableViewController.swift; path = Controllers/ShopTableViewController.swift; sourceTree = "<group>"; };
 		A13C59FF1F2906D800A2F152 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Calendar.storyboard; path = Storyboards/Calendar.storyboard; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				A1228B951F35207100C84904 /* Store.storyboard */,
 				A13C59FF1F2906D800A2F152 /* Calendar.storyboard */,
 				A1B0AB4F1F1D334800205600 /* Habits.storyboard */,
+				A11A56C11F3AF7BE00E3321C /* Launch Screen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */,
 				A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */,
+				A11A56C21F3AF7BE00E3321C /* Launch Screen.storyboard in Resources */,
 				A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */,
 				A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */,
 				A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */,

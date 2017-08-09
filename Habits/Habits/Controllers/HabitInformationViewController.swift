@@ -24,6 +24,8 @@ class HabitInformationViewController: UIViewController {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
         
+        datePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        
         //NOTIFICATION PERMISSION
         
         initNotificationSetupCheck()
@@ -38,14 +40,21 @@ class HabitInformationViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             let habits = CoreDataHelper.retrieveHabits()
-            let list = CoreDataHelper.retrieveGeneral()
-            let general = list[0]
-            if habits.count >= Int(general.rows) {
-                print("no") //alert saying no more
-                let alert = UIAlertController(title: "No More Slots", message: "Buy more at the shop or delete some existing habits!", preferredStyle: UIAlertControllerStyle.alert)
+            var listOfHabits = [String]()
+            for habit in habits {
+                listOfHabits.append(habit.habit!)
+            }
+            if (habitNameTextField.text?.isEmpty)! {
+                let alert = UIAlertController(title: "", message: "You forgot to add a name!" , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                 self.present(alert, animated: true, completion: nil)
-            } else {
+            } else if listOfHabits.contains(habitNameTextField.text!) {
+                let alert = UIAlertController(title: "", message: "You already have a habit called \(String(describing: habitNameTextField.text)). Please rename!" , preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+
             let habit = self.habit ?? CoreDataHelper.newHabit()
             if habit.habit != nil {
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [habit.habit!])
@@ -57,9 +66,7 @@ class HabitInformationViewController: UIViewController {
             habit.habit = habitNameTextField.text ?? ""
             habit.hour = chosenHour ?? ""
             habit.minute = chosenMinute ?? ""
-    //      habit.days =
             CoreDataHelper.saveHabit()
-            }
         }
     }
     

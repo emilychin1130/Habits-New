@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var month: UILabel!
     
     var selectedDate = ""
+    var arrayOfHabits = [String]()
     
     let outsideMonthColor = UIColor(colorWithHexValue: 0xB3B3B3)
     let monthColor = UIColor.black
@@ -31,6 +32,54 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         setupCalendarView()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates([ Date() ])
+        
+//        let list = CoreDataHelper.retrieveGeneral()
+//        
+//        let general = list[0]
+//        
+//        let date = Date()
+//        let calendar = Calendar.current
+//        
+//        let year = calendar.component(.year, from: date)
+//        let month = calendar.component(.month, from: date)
+//        let day = calendar.component(.day, from: date)
+//        
+//        let today = "\(year) \(month) \(day)"
+//        
+//        print(today)
+//        
+//        arrayOfHabits = (general.done?[selectedDate])!
+//        
+//        print(arrayOfHabits.count)
+        
+
+    }
+    
+    // DEFINE ARRAY
+    
+    func defineArray(array: [String]) {
+        let list = CoreDataHelper.retrieveGeneral()
+        
+        let general = list[0]
+        
+        let date = Date()
+        let calendar = Calendar.current
+        
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        let today = "\(year) \(month) \(day)"
+        
+        print(today)
+        
+        arrayOfHabits = array
+        
+   //     arrayOfHabits = (general.done?[selectedDate])!
+        
+        print(arrayOfHabits)
+        
+        print(arrayOfHabits.count)
     }
     
     func setupCalendarView() {
@@ -79,34 +128,23 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     // TABLE VIEW
     
     @IBOutlet weak var habitsDoneTableView: UITableView!
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HabitsDoneCell") as! HabitsDoneTableViewCell
         
         let row = indexPath.row
         
-        let list = CoreDataHelper.retrieveGeneral()
-        let general = list[0]
+        cell.habitDoneLabel.text = arrayOfHabits[row]
         
-        let date = Date()
-        let calendar = Calendar.current
+        print(arrayOfHabits)
         
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-
-        let today = "\(year) \(month) \(day)"
+        self.habitsDoneTableView.reloadData()
         
-        cell.habitDoneLabel.text = general.done?[today]?[row]
-        
-   //     self.habitsDoneTableView.reloadData()
-    
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 // arrayOfHabits.count // NUMBER OF HABITS DONE
+        return arrayOfHabits.count // NUMBER OF HABITS DONE
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,7 +163,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         formatter.locale = Calendar.current.locale
         
         let startDate = formatter.date(from: "2017 01 01")!
-        let endDate = formatter.date(from: "2017 12 31")!
+        //let endDate = formatter.date(from: "2017 12 31")!
         
         let parameters = ConfigurationParameters(startDate: startDate, endDate: Date())
         return parameters
@@ -153,15 +191,20 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         guard let validCell = cell as? CalendarCell else { return }
         validCell.selectedView.isHidden = false
-//        
-//        let cell1 = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarCell", for: IndexPath) as! CalendarCell
-//        
-//        formatter.dateFormat = "yyyy MM dd"
-//        formatter.timeZone = Calendar.current.timeZone
-//        formatter.locale = Calendar.current.locale
-//        
-//        var selectedDate = formatter.date(from: cell1.dateLabel.text!)
-//        print(selectedDate)
+
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let selectedDate = formatter.string(from: date)
+        print("WHYYYY \(selectedDate)")
+        
+        let list = CoreDataHelper.retrieveGeneral()
+        
+        let general = list[0]
+        
+        print(general.done?[selectedDate]!)
+        
+        defineArray(array: (general.done?[selectedDate]!)!)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {

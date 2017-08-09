@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1JQ-fe-QZg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1JQ-fe-QZg">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,8 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.62745098039215685" green="0.38823529411764707" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.91372549020000005" green="0.2470588235" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.91372549020000005" green="0.2470588235" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="i2l-F7-iDs" kind="relationship" relationship="viewControllers" id="dq5-Fh-0KA"/>
@@ -34,7 +35,7 @@
         <scene sceneID="GHd-li-AVS">
             <objects>
                 <viewControllerPlaceholder storyboardName="Habits" id="i2l-F7-iDs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="if_Untitled_2_21_536285" selectedImage="if_Untitled_2_21_536285" id="QWE-Yt-sZy">
+                    <tabBarItem key="tabBarItem" title="" image="if_Untitled_2_21_536285" id="QWE-Yt-sZy">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewControllerPlaceholder>
@@ -46,7 +47,7 @@
         <scene sceneID="rAp-hW-pik">
             <objects>
                 <viewControllerPlaceholder storyboardName="Calendar" id="bzb-Nw-eDV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="if_calendar_115762" selectedImage="if_calendar_115762" id="spf-3R-Olq">
+                    <tabBarItem key="tabBarItem" title="" image="if_calendar_115762" id="spf-3R-Olq">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewControllerPlaceholder>
@@ -58,7 +59,7 @@
         <scene sceneID="u3p-dX-vVf">
             <objects>
                 <viewControllerPlaceholder storyboardName="Store" id="TW4-eE-X5F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="if_shop_115799" selectedImage="if_shop_115799" id="CK7-8D-0tb">
+                    <tabBarItem key="tabBarItem" title="" image="if_shop_115799" id="CK7-8D-0tb">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewControllerPlaceholder>

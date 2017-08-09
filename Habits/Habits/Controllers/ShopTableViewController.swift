@@ -45,6 +45,8 @@ class ShopTableViewController: UITableViewController {
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
+        
+        
         if indexPath.row == 0 {
             general.points -= 15
             if general.points < 0 {
@@ -81,6 +83,8 @@ class ShopTableViewController: UITableViewController {
             CoreDataHelper.saveGeneral()
             }
         }
+        
+        self.tableView.reloadData()
     }
 
     /*
