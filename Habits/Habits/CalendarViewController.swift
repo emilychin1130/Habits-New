@@ -30,30 +30,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         setupCalendarView()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates([ Date() ])
-        
-  //      UICollectionView.selectItem(<#T##UICollectionView#>)
-
-        
-//        let list = CoreDataHelper.retrieveGeneral()
-//        
-//        let general = list[0]
-//        
-//        let date = Date()
-//        let calendar = Calendar.current
-//        
-//        let year = calendar.component(.year, from: date)
-//        let month = calendar.component(.month, from: date)
-//        let day = calendar.component(.day, from: date)
-//        
-//        let today = "\(year) \(month) \(day)"
-//        
-//        print(today)
-//        
-//        arrayOfHabits = (general.done?[selectedDate])!
-//        
-//        print(arrayOfHabits.count)
-        
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,8 +57,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         let today = "\(year) \(month) \(day)"
         
         arrayOfHabits = array
-        
-   //     arrayOfHabits = (general.done?[selectedDate])!
     }
     
     func setupCalendarView() {
@@ -111,11 +85,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     func handleCelltextColor(view: JTAppleCell?, cellState: CellState) {
         guard let validCell = view as? CalendarCell else {return}
         
-//        let todaysDate = Date()
-//        if formatter.string(from:todaysDate) == formatter.string(from:cellState.date) {
-//            validCell.textLabel.textColor = 008000
-//        }
-        
         if cellState.dateBelongsTo == .thisMonth {
             validCell.dateLabel.textColor = monthColor
         } else {
@@ -125,7 +94,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // TABLE VIEW
@@ -143,7 +111,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfHabits.count // NUMBER OF HABITS DONE
+        return arrayOfHabits.count 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -200,8 +168,6 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         let general = list[0]
         
         if general.done?[selectedDate] != nil {
-        
-            print(general.done?[selectedDate]!)
         
             defineArray(array: (general.done?[selectedDate]!)!)
             

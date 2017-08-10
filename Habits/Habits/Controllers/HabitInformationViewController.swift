@@ -52,7 +52,6 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -210,7 +209,7 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
         
         if habitNameTextField.text != nil && chosenHour != nil && chosenMinute != nil {
             scheduleNotification(title: "Time to do Your Tasks!", body: habitNameTextField.text!, hour: Int(chosenHour!)!, minute: Int(chosenMinute!)!, identifier: habitNameTextField.text!)
-        } else { print("no") }
+        }
     }
 }
 

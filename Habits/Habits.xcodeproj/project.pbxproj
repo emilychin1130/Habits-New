@@ -15,19 +15,15 @@
 		A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A011F29081600A2F152 /* CalendarViewController.swift */; };
 		A13C5A041F29141800A2F152 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13C5A031F29141800A2F152 /* CalendarCell.swift */; };
 		A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A13CB8C91F1D3C4F00137BD3 /* Info.plist */; };
-		A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */; };
-		A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */; };
 		A13CB8D11F1D589A00137BD3 /* ListHabitsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */; };
 		A13D53711F32498A0012A8BD /* HabitsDoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13D53701F32498A0012A8BD /* HabitsDoneTableViewCell.swift */; };
 		A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */; };
 		A1B0AB361F1D266A00205600 /* Habits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB341F1D266A00205600 /* Habits.xcdatamodeld */; };
 		A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB371F1D266A00205600 /* Assets.xcassets */; };
-		A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB471F1D2E5E00205600 /* ViewController.swift */; };
 		A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */; };
 		A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */; };
 		A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB4F1F1D334800205600 /* Habits.storyboard */; };
 		A1B0AB521F1D336900205600 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB511F1D336900205600 /* Main.storyboard */; };
-		A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */; };
 		A1F1C70C1F210E6700925A2A /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,20 +37,16 @@
 		A13C5A011F29081600A2F152 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A13C5A031F29141800A2F152 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = Views/CalendarCell.swift; sourceTree = "<group>"; };
 		A13CB8C91F1D3C4F00137BD3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitsPointsCell.swift; path = Views/HabitsPointsCell.swift; sourceTree = "<group>"; };
-		A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitsCell.swift; sourceTree = "<group>"; };
 		A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListHabitsCell.swift; sourceTree = "<group>"; };
 		A13D53701F32498A0012A8BD /* HabitsDoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitsDoneTableViewCell.swift; path = Views/HabitsDoneTableViewCell.swift; sourceTree = "<group>"; };
 		A1B0AB2A1F1D266A00205600 /* Habits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B0AB2D1F1D266A00205600 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1B0AB351F1D266A00205600 /* Habits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Habits.xcdatamodel; sourceTree = "<group>"; };
 		A1B0AB371F1D266A00205600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A1B0AB471F1D2E5E00205600 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
 		A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HabitInformationViewController.swift; path = Controllers/HabitInformationViewController.swift; sourceTree = "<group>"; };
 		A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListHabitsViewController.swift; path = Controllers/ListHabitsViewController.swift; sourceTree = "<group>"; };
 		A1B0AB4F1F1D334800205600 /* Habits.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Habits.storyboard; path = Storyboards/Habits.storyboard; sourceTree = "<group>"; };
 		A1B0AB511F1D336900205600 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
-		A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1F1C70B1F210E6700925A2A /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataHelper.swift; path = Helpers/CoreDataHelper.swift; sourceTree = "<group>"; };
 		B0DFA0706ACC635DDB842291 /* Pods_Habits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Habits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,8 +66,6 @@
 		A13CB8CB1F1D583700137BD3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A13CB8CC1F1D587200137BD3 /* HabitsPointsCell.swift */,
-				A13CB8CE1F1D588300137BD3 /* AddHabitsCell.swift */,
 				A13CB8D01F1D589A00137BD3 /* ListHabitsCell.swift */,
 				A13C5A031F29141800A2F152 /* CalendarCell.swift */,
 				A13D53701F32498A0012A8BD /* HabitsDoneTableViewCell.swift */,
@@ -119,7 +109,6 @@
 		A1B0AB451F1D2E3D00205600 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				A1B0AB531F1D337C00205600 /* LaunchScreen.storyboard */,
 				A1B0AB511F1D336900205600 /* Main.storyboard */,
 				A1228B951F35207100C84904 /* Store.storyboard */,
 				A13C59FF1F2906D800A2F152 /* Calendar.storyboard */,
@@ -132,7 +121,6 @@
 		A1B0AB461F1D2E4500205600 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1B0AB471F1D2E5E00205600 /* ViewController.swift */,
 				A1B0AB4D1F1D2F6600205600 /* ListHabitsViewController.swift */,
 				A1B0AB4B1F1D2F4900205600 /* HabitInformationViewController.swift */,
 				A13C5A011F29081600A2F152 /* CalendarViewController.swift */,
@@ -240,7 +228,6 @@
 				A13C5A001F2906D800A2F152 /* Calendar.storyboard in Resources */,
 				A1B0AB381F1D266A00205600 /* Assets.xcassets in Resources */,
 				A11A56C21F3AF7BE00E3321C /* Launch Screen.storyboard in Resources */,
-				A1B0AB541F1D337C00205600 /* LaunchScreen.storyboard in Resources */,
 				A1B0AB501F1D334800205600 /* Habits.storyboard in Resources */,
 				A13CB8CA1F1D3C4F00137BD3 /* Info.plist in Resources */,
 				A1228B961F35207100C84904 /* Store.storyboard in Resources */,
@@ -305,11 +292,8 @@
 			files = (
 				A1228B9A1F35283D00C84904 /* ShopTableViewController.swift in Sources */,
 				A13C5A021F29081600A2F152 /* CalendarViewController.swift in Sources */,
-				A1B0AB481F1D2E5E00205600 /* ViewController.swift in Sources */,
-				A13CB8CD1F1D587200137BD3 /* HabitsPointsCell.swift in Sources */,
 				A1B0AB2E1F1D266A00205600 /* AppDelegate.swift in Sources */,
 				A1B0AB4E1F1D2F6600205600 /* ListHabitsViewController.swift in Sources */,
-				A13CB8CF1F1D588300137BD3 /* AddHabitsCell.swift in Sources */,
 				A13C5A041F29141800A2F152 /* CalendarCell.swift in Sources */,
 				A1B0AB4C1F1D2F4900205600 /* HabitInformationViewController.swift in Sources */,
 				A13D53711F32498A0012A8BD /* HabitsDoneTableViewCell.swift in Sources */,

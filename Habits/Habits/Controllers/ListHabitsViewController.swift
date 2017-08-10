@@ -28,10 +28,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewDidLoad")
-        
-
-        
         UIApplication.shared.statusBarStyle = .lightContent
 
         habits = CoreDataHelper.retrieveHabits()
@@ -49,10 +45,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         numberOfPointsLabel.text = "\(general.points)"
         
-        print(general.done)
-        
-                print(general.lastopened)
-        
         CoreDataHelper.saveGeneral()
         
         scheduleAll()
@@ -64,8 +56,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        print("viewWillAppear")
         
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
@@ -102,8 +92,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        print("viewWillDisappear")
         
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
@@ -238,7 +226,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             if identifier == "displayHabit" {
-                print("Table view cell tapped")
                 
                 let indexPath = tableView.indexPathForSelectedRow!
                 
@@ -249,7 +236,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                habitInformationViewController.habit = habit
                 
             } else if identifier == "addHabit" {
-                print("+ button tapped")
                 let list = CoreDataHelper.retrieveGeneral()
                 let general = list[0]
                 if habits.count >= Int(general.rows) {
@@ -313,9 +299,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 if hourDictionary[name] != nil && minuteDictionary[name] != nil && habit.notification == true {
                     scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
                 }
-                else {
-                }
-            } else { print("no1") }
+            }
         }
     }
     
@@ -345,10 +329,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         general.done?[selectedDate] = arrayOfHabits
         
-        print(selectedDate)
-        print(arrayOfHabits)
-        print(general.done)
-        
         CoreDataHelper.saveGeneral()
         
     }
@@ -369,7 +349,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
             CoreDataHelper.saveHabit()
-            print("yay")
     }
 }
 
