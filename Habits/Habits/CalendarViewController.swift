@@ -20,8 +20,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     
     let outsideMonthColor = UIColor(colorWithHexValue: 0xB3B3B3)
     let monthColor = UIColor.white
-//    let selectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
-//    let currentDateSelectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
     
     let formatter = DateFormatter()
     
@@ -82,15 +80,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         
         let today = "\(year) \(month) \(day)"
         
-        print(today)
-        
         arrayOfHabits = array
         
    //     arrayOfHabits = (general.done?[selectedDate])!
-        
-        print(arrayOfHabits)
-        
-        print(arrayOfHabits.count)
     }
     
     func setupCalendarView() {
@@ -147,8 +139,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         
         cell.habitDoneLabel.text = arrayOfHabits[row]
         
-        print(arrayOfHabits)
-        
         return cell
     }
     
@@ -204,7 +194,6 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         let selectedDate = formatter.string(from: date)
-        print("WHYYYY \(selectedDate)")
         
         let list = CoreDataHelper.retrieveGeneral()
         

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-class HabitInformationViewController: UIViewController {
+class HabitInformationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var habitNameTextField: UITextField!
 
     @IBOutlet weak var notification: UISwitch!
@@ -18,10 +18,17 @@ class HabitInformationViewController: UIViewController {
     var habit: Habit?
     var chosenHour: String? = "1"
     var chosenMinute: String? = "00"
-
+    var isEdit: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //check if habit is nil or not and do things
+        
+        if habit?.habit != nil {
+            isEdit = true
+        }
+        
         UIApplication.shared.statusBarStyle = .lightContent
         
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
@@ -30,6 +37,19 @@ class HabitInformationViewController: UIViewController {
         
         initNotificationSetupCheck()
 
+        //init toolbar
+        let toolbar:UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0,  width: self.view.frame.size.width, height: 30))
+        //create left side empty space so that done button set on right side
+        let flexSpace = UIBarButtonItem(barButtonSystemItem:    .flexibleSpace, target: nil, action: nil)
+        let doneBtn: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: Selector("doneButtonAction"))
+        toolbar.setItems([flexSpace, doneBtn], animated: false)
+        toolbar.sizeToFit()
+        //setting toolbar as inputAccessoryView
+        self.habitNameTextField.inputAccessoryView = toolbar
+    }
+    
+    func doneButtonAction() {
+        self.view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,7 +112,6 @@ class HabitInformationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let habit = habit {
-            //habit.hour = chosenHour
             habitNameTextField.text = habit.habit
             chosenHour = habit.hour
             chosenMinute = habit.minute
@@ -112,10 +131,15 @@ class HabitInformationViewController: UIViewController {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.habitNameTextField.resignFirstResponder()
+        return true
+    }
+    
     // NOTIFICATION PERMISSION
  
     func initNotificationSetupCheck() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert])
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
         { (success, error) in
             if success {
                 print("Permission Granted")
@@ -166,6 +190,7 @@ class HabitInformationViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
+        content.sound = UNNotificationSound.default()
         
         var dateComponents = DateComponents()
         dateComponents.hour = hour
@@ -175,13 +200,6 @@ class HabitInformationViewController: UIViewController {
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-//
-//    func scheduleAll() {
-//        addToDictionaries()
-//        if let name = habitNameTextField.text {
-//            scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!)
-//        }
-//    }
 
     // SET EACH TIME THING UP
     @IBOutlet weak var datePicker: UIDatePicker!

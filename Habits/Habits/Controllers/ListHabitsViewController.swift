@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-var isEdit: Bool = false
+
 
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    var habit: Habit?
@@ -49,28 +49,11 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         numberOfPointsLabel.text = "\(general.points)"
         
+        print(general.done)
+        
         CoreDataHelper.saveGeneral()
         
         scheduleAll()
-        
-        let general1 = CoreDataHelper.retrieveGeneral()
-        
-//        print(general1[0].rows)
-        
-//        if(timer != nil)
-//        {
-//            timer?.invalidate()
-//        }
-//        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
-//        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
-//        
-//        if(otherTimer != nil)
-//        {
-//            otherTimer?.invalidate()
-//        }
-//        otherTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.setPoints), userInfo: nil, repeats: true)
-//        RunLoop.current.add(otherTimer!, forMode: RunLoopMode.commonModes)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,14 +63,21 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        if general.lastopened != Date() as NSDate {
+            reset()
+        }
+        
         // CONTINUOUSLY RUN RESET AND SETPOINTS AND GENERAL
         
-        if(timer != nil)
-        {
-            timer?.invalidate()
-        }
-        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+//        if(timer != nil)
+//        {
+//            timer?.invalidate()
+//        }
+//        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
+//        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
         
         if(otherTimer != nil)
         {
@@ -106,10 +96,14 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        general.points = Int64(numberOfPoints) ?? 0
-//        CoreDataHelper.saveGeneral()
-//        timer?.invalidate()
-//        otherTimer?.invalidate()
+        
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        general.lastopened = Date() as NSDate
+        
+        CoreDataHelper.saveGeneral()
+        
     }
     
     var habits = [Habit]() {
@@ -129,11 +123,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     func reload() {
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
- //       general.points = Int64(numberOfPoints)
-    //    CoreDataHelper.saveGeneral()
         numberOfPointsLabel.text = "\(general.points)"
         self.numberOfPointsLabel.reloadInputViews()
- //       general.points = Int64(numberOfPoints)
         CoreDataHelper.saveGeneral()
     }
     
@@ -144,18 +135,13 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             general.points = 0
             general.rows = 3
         } else if list.count == 1 {
-//            let general = CoreDataHelper.retrieveGeneral()
-//   //         numberOfPoints = Int(general[0].points)
             self.numberOfPointsLabel.reloadInputViews()
         }
         CoreDataHelper.saveGeneral()
     }
     
     func updateGeneral() {
-//        let general = CoreDataHelper.retrieveGeneral()
- //       general[0].points = Int64(numberOfPoints)
         CoreDataHelper.saveGeneral()
- //       self.numberOfPointsLabel.reloadInputViews()
     }
     
     // TABLE VIEW
@@ -168,7 +154,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let general = CoreDataHelper.retrieveGeneral()
         return habits.count
     }
     
@@ -203,12 +188,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 CoreDataHelper.saveHabit()
                 general.points += Int(habit.days)
             }
-  //          print(numberOfPoints)
             self.numberOfPointsLabel.reloadInputViews()
             self.tableView.reloadData()
         }
-//        habit?.points = Int64(numberOfPoints)
-//        print(habit?.points)
         CoreDataHelper.saveHabit()
     }
     
@@ -255,21 +237,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 
                habitInformationViewController.habit = habit
                 
-                isEdit = true
-                
             } else if identifier == "addHabit" {
                 print("+ button tapped")
                 let list = CoreDataHelper.retrieveGeneral()
                 let general = list[0]
                 if habits.count >= Int(general.rows) {
-                    print("no") //alert saying no more
-                    
                         let alert = UIAlertController(title: "No More Slots", message: "Buy more at the shop or delete some existing habits!", preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                         self.present(alert, animated: true, completion: nil)
                 }
-                
-                isEdit = false
             }
         }
     }
@@ -343,21 +319,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
         
-//        print(arrayOfHabits)
-        
         let date = Date()
         let calendar = Calendar.current
 
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
+//        let year = calendar.component(.year, from: date)
+//        let month = calendar.component(.month, from: date)
+//        let day = calendar.component(.day, from: date)
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
-        
-        let today = "\(year) \(month) \(day)"
-        
-//        print(today)
         
         let formatter = DateFormatter()
         
@@ -365,18 +335,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         formatter.timeZone = Calendar.current.timeZone
         formatter.locale = Calendar.current.locale
         let selectedDate = formatter.string(from: date)
-        
-//        print(selectedDate)
 
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
-        general.done = [selectedDate:arrayOfHabits]
-//        print(general.done)
+        general.done?[selectedDate] = arrayOfHabits
         
         CoreDataHelper.saveGeneral()
         
-        if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
+ //       if "\(hour):\(minutes):\(seconds)" == "11:40:30" {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {
                     habits[x].days = 0
@@ -393,13 +360,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             }
             CoreDataHelper.saveHabit()
             print("yay")
-        }
-//        let cal = Calendar(identifier: .gregorian)
-//        let newDate = cal.startOfDay(for: date)
-//        print(newDate)
+//        }
     }
-
-
-
 }
 

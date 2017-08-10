@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="General" representedClassName="General" syncable="YES" codeGenerationType="class">
         <attribute name="done" optional="YES" attributeType="Transformable" customClassName="[String:[String]]" syncable="YES"/>
+        <attribute name="lastopened" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rows" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
@@ -16,7 +17,7 @@
         <attribute name="points" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
+        <element name="General" positionX="-63" positionY="36" width="128" height="105"/>
         <element name="Habit" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="General" positionX="-63" positionY="36" width="128" height="88"/>
     </elements>
 </model>

@@ -119,7 +119,13 @@
                             <outlet property="delegate" destination="76C-iz-hDf" id="aax-NC-X0E"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Shop" id="4oU-JW-55Q"/>
+                    <navigationItem key="navigationItem" title="Shop" id="siM-f9-QGe">
+                        <barButtonItem key="rightBarButtonItem" title="Credits" id="FOE-oB-b19">
+                            <connections>
+                                <segue destination="jpp-tF-Y44" kind="show" id="ex2-wH-T8u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="shopTableView" destination="yLu-nT-J7R" id="Xei-jj-g5C"/>
                     </connections>
@@ -127,6 +133,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCe-Zc-9dQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1852" y="1090"/>
+        </scene>
+        <!--Credits-->
+        <scene sceneID="kLI-43-JX4">
+            <objects>
+                <viewController id="jpp-tF-Y44" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="r6u-Qe-CdO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fe3-Z3-85A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f9y-h0-vNy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bullet, interface, list icon By: synonymsof Licenced Under CC By 3.0" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcS-Uv-RSg">
+                                <rect key="frame" x="20" y="84" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Wgh-UB-3pH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop Icon By: Designmodo Licensed Under CC BY 3.O" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozZ-iF-Sag">
+                                <rect key="frame" x="20" y="224" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="dhW-Jp-d82"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar, date, event, month Icon By: Designmodo Licensed Under CC BY 3.O" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-bC-Kvw">
+                                <rect key="frame" x="20" y="154" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="4N1-gR-rl4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vcS-Uv-RSg" firstAttribute="top" secondItem="r6u-Qe-CdO" secondAttribute="bottom" constant="20" id="5Ae-XK-Lc0"/>
+                            <constraint firstAttribute="trailing" secondItem="ozZ-iF-Sag" secondAttribute="trailing" constant="20" id="7Di-UJ-Xgj"/>
+                            <constraint firstAttribute="trailing" secondItem="vcS-Uv-RSg" secondAttribute="trailing" constant="20" id="AtV-aM-D53"/>
+                            <constraint firstItem="vcS-Uv-RSg" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="BCA-6B-6tP"/>
+                            <constraint firstItem="zHh-bC-Kvw" firstAttribute="top" secondItem="vcS-Uv-RSg" secondAttribute="bottom" constant="20" id="Qcp-yV-KzK"/>
+                            <constraint firstAttribute="trailing" secondItem="zHh-bC-Kvw" secondAttribute="trailing" constant="20" id="fSY-eG-2eL"/>
+                            <constraint firstItem="ozZ-iF-Sag" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="gqC-64-V2P"/>
+                            <constraint firstItem="ozZ-iF-Sag" firstAttribute="top" secondItem="zHh-bC-Kvw" secondAttribute="bottom" constant="20" id="hvH-Hq-Sgr"/>
+                            <constraint firstItem="zHh-bC-Kvw" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="nFu-yk-Sb7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Credits" id="Rce-HK-ZOW">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="FG8-rc-zcV">
+                            <connections>
+                                <segue destination="4cR-2y-VL1" kind="unwind" unwindAction="unwindToShopTableViewController:" id="WxO-5t-6ZK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kmT-AU-cNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4cR-2y-VL1" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2632.8000000000002" y="1091.6041979010495"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h36-LH-Hch">
@@ -137,9 +209,10 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jXp-zX-XV5">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jXp-zX-XV5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.91372549020000005" green="0.2470588235" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

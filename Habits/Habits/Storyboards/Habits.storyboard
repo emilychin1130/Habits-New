@@ -63,8 +63,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
-                                                    <rect key="frame" x="20" y="15" width="335" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZn-B6-IZE">
+                                                    <rect key="frame" x="20" y="13" width="335" height="27"/>
                                                     <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -84,7 +84,7 @@
                                                 <constraint firstItem="c19-pu-QYg" firstAttribute="top" secondItem="kZn-B6-IZE" secondAttribute="bottom" constant="2" id="8MT-6d-jCz"/>
                                                 <constraint firstItem="c19-pu-QYg" firstAttribute="top" secondItem="5Sl-bq-pPF" secondAttribute="top" constant="38" id="Jub-hh-q3R"/>
                                                 <constraint firstAttribute="bottom" secondItem="c19-pu-QYg" secondAttribute="bottom" constant="15" id="bP3-lU-eqT"/>
-                                                <constraint firstItem="kZn-B6-IZE" firstAttribute="top" secondItem="5Sl-bq-pPF" secondAttribute="top" constant="15" id="bdQ-oU-efn"/>
+                                                <constraint firstItem="kZn-B6-IZE" firstAttribute="top" secondItem="5Sl-bq-pPF" secondAttribute="top" constant="13" id="bdQ-oU-efn"/>
                                                 <constraint firstItem="c19-pu-QYg" firstAttribute="leading" secondItem="kZn-B6-IZE" secondAttribute="leading" id="nuy-8T-Def"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -173,31 +173,43 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zJr-8v-Mck">
-                                <rect key="frame" x="0.0" y="302" width="375" height="216"/>
+                                <rect key="frame" x="0.0" y="327" width="375" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="523040918.53331">
                                     <!--2017-07-29 17:08:38 +0000-->
                                 </date>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="coq-A4-kCU">
-                                <rect key="frame" x="50" y="257.5" width="225" height="36.5"/>
+                                <rect key="frame" x="50" y="282.5" width="225" height="36.5"/>
                                 <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqX-uJ-cwr">
-                                <rect key="frame" x="276" y="261" width="51" height="31"/>
+                                <rect key="frame" x="276" y="286" width="51" height="31"/>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Make sure to give all your habits unique names." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvp-2s-6Bq">
+                                <rect key="frame" x="20" y="126" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="szR-2w-q2G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="15.5"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="centerY" secondItem="7Eo-hN-nvq" secondAttribute="centerY" id="2DZ-gO-Aub"/>
                             <constraint firstItem="aqX-uJ-cwr" firstAttribute="centerY" secondItem="coq-A4-kCU" secondAttribute="centerY" id="3t3-Oe-bkI"/>
                             <constraint firstAttribute="trailing" secondItem="nJM-UY-LhW" secondAttribute="trailing" constant="15" id="4YV-kj-Fiz"/>
-                            <constraint firstAttribute="bottom" secondItem="coq-A4-kCU" secondAttribute="bottom" constant="373" id="IRU-dA-0WU"/>
+                            <constraint firstItem="Xvp-2s-6Bq" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="20" id="AEK-41-ITz"/>
+                            <constraint firstAttribute="bottom" secondItem="coq-A4-kCU" secondAttribute="bottom" constant="348" id="IRU-dA-0WU"/>
                             <constraint firstAttribute="trailing" secondItem="coq-A4-kCU" secondAttribute="trailing" constant="100" id="Nye-ch-pYS"/>
+                            <constraint firstItem="Xvp-2s-6Bq" firstAttribute="top" secondItem="7Eo-hN-nvq" secondAttribute="bottom" constant="20" id="Rpu-dl-GTt"/>
                             <constraint firstItem="coq-A4-kCU" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" constant="50" id="TKH-Sh-o1S"/>
-                            <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="zJr-8v-Mck" secondAttribute="bottom" constant="100" id="VPv-6p-sBq"/>
+                            <constraint firstItem="U59-DL-H2c" firstAttribute="top" secondItem="zJr-8v-Mck" secondAttribute="bottom" constant="75" id="VPv-6p-sBq"/>
                             <constraint firstAttribute="trailing" secondItem="zJr-8v-Mck" secondAttribute="trailing" id="XIl-7e-y8a"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvp-2s-6Bq" secondAttribute="trailing" constant="20" id="YvR-bc-O4w"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="leading" secondItem="7Eo-hN-nvq" secondAttribute="trailing" constant="20" id="cfA-V7-0Vo"/>
                             <constraint firstItem="nJM-UY-LhW" firstAttribute="top" secondItem="Lrj-7j-DWr" secondAttribute="bottom" constant="15" id="kDv-iy-dzl"/>
                             <constraint firstItem="zJr-8v-Mck" firstAttribute="leading" secondItem="5v4-3u-QWw" secondAttribute="leading" id="lBK-ip-mTG"/>
@@ -240,7 +252,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ng4-2y-jga">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ng4-2y-jga">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
