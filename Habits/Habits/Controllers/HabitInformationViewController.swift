@@ -48,12 +48,29 @@ class HabitInformationViewController: UIViewController {
                 let alert = UIAlertController(title: "", message: "You forgot to add a name!" , preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                 self.present(alert, animated: true, completion: nil)
-            } else if listOfHabits.contains(habitNameTextField.text!) {
-                let alert = UIAlertController(title: "", message: "You already have a habit called \(String(describing: habitNameTextField.text)). Please rename!" , preferredStyle: UIAlertControllerStyle.alert)
+            } else
+            if isEdit == false {
+                if listOfHabits.contains(habitNameTextField.text!) {
+                let alert = UIAlertController(title: "", message: "You already have a habit called \(String(describing: habitNameTextField.text!)). Please rename!" , preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                 self.present(alert, animated: true, completion: nil)
-            }
-            
+                } else {
+                    
+                    let habit = self.habit ?? CoreDataHelper.newHabit()
+                    if habit.habit != nil {
+                        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [habit.habit!])
+                    }
+                    habit.notification = notification.isOn
+                    if notification.isOn == true {
+                        scheduleAll()
+                    }
+                    habit.habit = habitNameTextField.text ?? ""
+                    habit.hour = chosenHour ?? ""
+                    habit.minute = chosenMinute ?? ""
+                    CoreDataHelper.saveHabit()
+                }
+
+            } else {
 
             let habit = self.habit ?? CoreDataHelper.newHabit()
             if habit.habit != nil {
@@ -67,6 +84,8 @@ class HabitInformationViewController: UIViewController {
             habit.hour = chosenHour ?? ""
             habit.minute = chosenMinute ?? ""
             CoreDataHelper.saveHabit()
+            }
+            
         }
     }
     

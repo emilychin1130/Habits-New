@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import UserNotifications
 
+var isEdit: Bool = false
+
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    var habit: Habit?
  //   var numberOfDays: Int = 0
@@ -142,15 +144,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             general.points = 0
             general.rows = 3
         } else if list.count == 1 {
-            let general = CoreDataHelper.retrieveGeneral()
-   //         numberOfPoints = Int(general[0].points)
+//            let general = CoreDataHelper.retrieveGeneral()
+//   //         numberOfPoints = Int(general[0].points)
             self.numberOfPointsLabel.reloadInputViews()
         }
         CoreDataHelper.saveGeneral()
     }
     
     func updateGeneral() {
-        let general = CoreDataHelper.retrieveGeneral()
+//        let general = CoreDataHelper.retrieveGeneral()
  //       general[0].points = Int64(numberOfPoints)
         CoreDataHelper.saveGeneral()
  //       self.numberOfPointsLabel.reloadInputViews()
@@ -166,7 +168,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let general = CoreDataHelper.retrieveGeneral()
+//        let general = CoreDataHelper.retrieveGeneral()
         return habits.count
     }
     
@@ -189,6 +191,11 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 habit.checked = false
                 CoreDataHelper.saveHabit()
                 general.points -= (1 + Int(habit.days))
+                if general.points < 0 {
+                    let alert = UIAlertController(title: "Negative Points?", message: "Negative points are displayed when you have used up points that you accidentally received.", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                    self.present(alert, animated: true, completion: nil)
+                }
             } else {
                 cell?.accessoryType = .checkmark
                 habit.days += 1
@@ -248,6 +255,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 
                habitInformationViewController.habit = habit
                 
+                isEdit = true
+                
             } else if identifier == "addHabit" {
                 print("+ button tapped")
                 let list = CoreDataHelper.retrieveGeneral()
@@ -259,6 +268,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                         self.present(alert, animated: true, completion: nil)
                 }
+                
+                isEdit = false
             }
         }
     }
@@ -365,7 +376,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         CoreDataHelper.saveGeneral()
         
-        if "\(hour):\(minutes):\(seconds)" == "14:20:0" {
+        if "\(hour):\(minutes):\(seconds)" == "0:0:0" {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {
                     habits[x].days = 0

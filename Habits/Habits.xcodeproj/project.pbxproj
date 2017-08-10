@@ -209,6 +209,7 @@
 				TargetAttributes = {
 					A1B0AB291F1D266A00205600 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = W867R2Y26U;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -417,6 +418,7 @@
 			baseConfigurationReference = 8E25518CA7A64675F214AC97 /* Pods-Habits.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W867R2Y26U;
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.emilychin.Habits;
@@ -430,6 +432,7 @@
 			baseConfigurationReference = 22259F062A5D2381405F8D17 /* Pods-Habits.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = W867R2Y26U;
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.emilychin.Habits;

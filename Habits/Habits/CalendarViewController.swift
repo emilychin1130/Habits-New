@@ -19,7 +19,7 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     var arrayOfHabits = [String]()
     
     let outsideMonthColor = UIColor(colorWithHexValue: 0xB3B3B3)
-    let monthColor = UIColor.black
+    let monthColor = UIColor.white
 //    let selectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
 //    let currentDateSelectedMonthColor = UIColor(colorWithHexValue: <#T##Int#>)
     
@@ -32,6 +32,9 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         setupCalendarView()
         calendarView.scrollToDate(Date(), animateScroll: false)
         calendarView.selectDates([ Date() ])
+        
+  //      UICollectionView.selectItem(<#T##UICollectionView#>)
+
         
 //        let list = CoreDataHelper.retrieveGeneral()
 //        
@@ -53,6 +56,14 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
 //        print(arrayOfHabits.count)
         
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.habitsDoneTableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.habitsDoneTableView.reloadData()
     }
     
     // DEFINE ARRAY
@@ -138,8 +149,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
         
         print(arrayOfHabits)
         
-        self.habitsDoneTableView.reloadData()
-        
         return cell
     }
     
@@ -163,7 +172,6 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         formatter.locale = Calendar.current.locale
         
         let startDate = formatter.date(from: "2017 01 01")!
-        //let endDate = formatter.date(from: "2017 12 31")!
         
         let parameters = ConfigurationParameters(startDate: startDate, endDate: Date())
         return parameters
@@ -202,9 +210,17 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
         
         let general = list[0]
         
-        print(general.done?[selectedDate]!)
+        if general.done?[selectedDate] != nil {
         
-        defineArray(array: (general.done?[selectedDate]!)!)
+            print(general.done?[selectedDate]!)
+        
+            defineArray(array: (general.done?[selectedDate]!)!)
+            
+        } else {
+            defineArray(array: [  ])
+        }
+        
+        self.habitsDoneTableView.reloadData()
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -215,6 +231,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
         setupViewsOfCalendar(from: visibleDates)
     }
+    
 }
 
 extension UIColor {
