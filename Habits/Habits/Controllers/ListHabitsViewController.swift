@@ -13,14 +13,9 @@ import UserNotifications
 
 
 class ListHabitsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-//    var habit: Habit?
- //   var numberOfDays: Int = 0
     var timer: Timer?
     var otherTimer: Timer?
     var reloadTimer: Timer?
- //   var numberOfPoints: Int = 0
-    
-//    var general = General()
     
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
 
@@ -32,13 +27,18 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("viewDidLoad")
+        
+
+        
         UIApplication.shared.statusBarStyle = .lightContent
 
         habits = CoreDataHelper.retrieveHabits()
         
         setUpGeneral()
         
-        reset()
+        updateCalendar()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -50,6 +50,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         numberOfPointsLabel.text = "\(general.points)"
         
         print(general.done)
+        
+                print(general.lastopened)
         
         CoreDataHelper.saveGeneral()
         
@@ -63,21 +65,25 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        print("viewWillAppear")
+        
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
         if general.lastopened != Date() as NSDate {
-            reset()
+            general.callfunction = true
+        } else {
+            general.callfunction = false
         }
         
-        // CONTINUOUSLY RUN RESET AND SETPOINTS AND GENERAL
+        // CONTINUOUSLY RUN UPDATECALENDAR AND SETPOINTS AND GENERAL
         
-//        if(timer != nil)
-//        {
-//            timer?.invalidate()
-//        }
-//        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
-//        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        if(timer != nil)
+        {
+            timer?.invalidate()
+        }
+        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.updateCalendar), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
         
         if(otherTimer != nil)
         {
@@ -96,6 +102,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        print("viewWillDisappear")
         
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
@@ -134,6 +142,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             let general = CoreDataHelper.newGeneral()
             general.points = 0
             general.rows = 3
+            general.callfunction = false
+            general.lastopened = Date() as NSDate
+            general.done = ["":[]]
         } else if list.count == 1 {
             self.numberOfPointsLabel.reloadInputViews()
         }
@@ -310,7 +321,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     
     // RESET AT MIDNIGHT
     
-    func reset() {
+    func updateCalendar() {
         var arrayOfHabits = [String]()
         
         for habit in habits {
@@ -321,13 +332,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         let date = Date()
         let calendar = Calendar.current
-
-//        let year = calendar.component(.year, from: date)
-//        let month = calendar.component(.month, from: date)
-//        let day = calendar.component(.day, from: date)
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
-        let seconds = calendar.component(.second, from: date)
         
         let formatter = DateFormatter()
         
@@ -341,9 +345,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         
         general.done?[selectedDate] = arrayOfHabits
         
+        print(selectedDate)
+        print(arrayOfHabits)
+        print(general.done)
+        
         CoreDataHelper.saveGeneral()
         
- //       if "\(hour):\(minutes):\(seconds)" == "11:40:30" {
+    }
+    
+    func reset() {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {
                     habits[x].days = 0
@@ -360,7 +370,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             }
             CoreDataHelper.saveHabit()
             print("yay")
-//        }
     }
 }
 

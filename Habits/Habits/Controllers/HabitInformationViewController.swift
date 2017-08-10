@@ -23,8 +23,6 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //check if habit is nil or not and do things
-        
         if habit?.habit != nil {
             isEdit = true
         }
@@ -111,6 +109,7 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let habit = habit {
             habitNameTextField.text = habit.habit
             chosenHour = habit.hour
