@@ -66,7 +66,14 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             general.callfunction = false
         }
         
-        // CONTINUOUSLY RUN UPDATECALENDAR AND SETPOINTS AND GENERAL
+        // CONTINUOUSLY RUN RESET AND UPDATECALENDAR AND SETPOINTS AND GENERAL
+        
+        if(timer != nil)
+        {
+            timer?.invalidate()
+        }
+        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
         
         if(timer != nil)
         {
@@ -333,6 +340,10 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func reset() {
+        let list = CoreDataHelper.retrieveGeneral()
+        let general = list[0]
+        
+        if general.callfunction == true {
             for x in 0 ..< habits.count {
                 if habits[x].checked == false {
                     habits[x].days = 0
@@ -348,6 +359,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
             CoreDataHelper.saveHabit()
+        }
     }
 }
 
