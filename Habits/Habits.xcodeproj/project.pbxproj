@@ -433,8 +433,9 @@
 				DEVELOPMENT_TEAM = W867R2Y26U;
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.emilychin.Habits;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mawin.habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -447,8 +448,9 @@
 				DEVELOPMENT_TEAM = W867R2Y26U;
 				INFOPLIST_FILE = Habits/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.emilychin.Habits;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mawin.habits;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

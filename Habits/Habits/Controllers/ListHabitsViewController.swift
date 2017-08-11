@@ -304,7 +304,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         for habit in habits {
             if let name = habit.habit {
                 if hourDictionary[name] != nil && minuteDictionary[name] != nil && habit.notification == true {
-                    scheduleNotification(title: "Time to do Your Tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
+                    scheduleNotification(title: "Time to do your tasks!", body: name, hour: hourDictionary[name]!, minute: minuteDictionary[name]!, identifier: name)
                 }
             }
         }

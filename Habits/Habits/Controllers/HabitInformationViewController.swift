@@ -63,13 +63,13 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
             }
             if (habitNameTextField.text?.isEmpty)! {
                 let alert = UIAlertController(title: "", message: "You forgot to add a name!" , preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                alert.addAction(UIAlertAction(title: "Add a name", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                 self.present(alert, animated: true, completion: nil)
             } else
             if isEdit == false {
                 if listOfHabits.contains(habitNameTextField.text!) {
-                let alert = UIAlertController(title: "", message: "You already have a habit called \(String(describing: habitNameTextField.text!)). Please rename!" , preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
+                let alert = UIAlertController(title: "", message: "You already have a habit called \(String(describing: habitNameTextField.text!))." , preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Rename", style: UIAlertActionStyle.default, handler: {(action) in alert.dismiss(animated: true, completion: nil) } ) )
                 self.present(alert, animated: true, completion: nil)
                 } else {
                     
@@ -206,7 +206,7 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
         datePickerAction()
         
         if habitNameTextField.text != nil && chosenHour != nil && chosenMinute != nil {
-            scheduleNotification(title: "Time to do Your Tasks!", body: habitNameTextField.text!, hour: Int(chosenHour!)!, minute: Int(chosenMinute!)!, identifier: habitNameTextField.text!)
+            scheduleNotification(title: "Time to do your tasks!", body: habitNameTextField.text!, hour: Int(chosenHour!)!, minute: Int(chosenMinute!)!, identifier: habitNameTextField.text!)
         }
     }
 }
