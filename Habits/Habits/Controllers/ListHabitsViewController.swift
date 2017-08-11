@@ -315,7 +315,6 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         }
         
         let date = Date()
-        let calendar = Calendar.current
         
         let formatter = DateFormatter()
         

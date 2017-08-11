@@ -140,9 +140,7 @@ class HabitInformationViewController: UIViewController, UITextFieldDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])
         { (success, error) in
             if success {
-                print("Permission Granted")
             } else {
-                print("There was a problem!")
             }
         }
     }

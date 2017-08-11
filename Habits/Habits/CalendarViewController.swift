@@ -43,19 +43,6 @@ class CalendarViewController: UIViewController, UITableViewDelegate, UITableView
     // DEFINE ARRAY
     
     func defineArray(array: [String]) {
-        let list = CoreDataHelper.retrieveGeneral()
-        
-        let general = list[0]
-        
-        let date = Date()
-        let calendar = Calendar.current
-        
-        let year = calendar.component(.year, from: date)
-        let month = calendar.component(.month, from: date)
-        let day = calendar.component(.day, from: date)
-        
-        let today = "\(year) \(month) \(day)"
-        
         arrayOfHabits = array
     }
     

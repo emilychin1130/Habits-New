@@ -164,6 +164,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All can be found at www.iconfinder.com" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYx-JH-Q9a">
+                                <rect key="frame" x="20" y="294" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0Rz-4Y-N0v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar, date, event, month Icon By: Designmodo Licensed Under CC BY 3.O" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHh-bC-Kvw">
                                 <rect key="frame" x="20" y="154" width="335" height="50"/>
                                 <constraints>
@@ -176,11 +185,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aYx-JH-Q9a" secondAttribute="trailing" constant="20" id="085-NY-ZJT"/>
                             <constraint firstItem="vcS-Uv-RSg" firstAttribute="top" secondItem="r6u-Qe-CdO" secondAttribute="bottom" constant="20" id="5Ae-XK-Lc0"/>
                             <constraint firstAttribute="trailing" secondItem="ozZ-iF-Sag" secondAttribute="trailing" constant="20" id="7Di-UJ-Xgj"/>
                             <constraint firstAttribute="trailing" secondItem="vcS-Uv-RSg" secondAttribute="trailing" constant="20" id="AtV-aM-D53"/>
                             <constraint firstItem="vcS-Uv-RSg" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="BCA-6B-6tP"/>
                             <constraint firstItem="zHh-bC-Kvw" firstAttribute="top" secondItem="vcS-Uv-RSg" secondAttribute="bottom" constant="20" id="Qcp-yV-KzK"/>
+                            <constraint firstItem="aYx-JH-Q9a" firstAttribute="top" secondItem="ozZ-iF-Sag" secondAttribute="bottom" constant="20" id="Wph-ql-taa"/>
+                            <constraint firstItem="aYx-JH-Q9a" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="Y7W-je-n31"/>
                             <constraint firstAttribute="trailing" secondItem="zHh-bC-Kvw" secondAttribute="trailing" constant="20" id="fSY-eG-2eL"/>
                             <constraint firstItem="ozZ-iF-Sag" firstAttribute="leading" secondItem="f9y-h0-vNy" secondAttribute="leading" constant="20" id="gqC-64-V2P"/>
                             <constraint firstItem="ozZ-iF-Sag" firstAttribute="top" secondItem="zHh-bC-Kvw" secondAttribute="bottom" constant="20" id="hvH-Hq-Sgr"/>
