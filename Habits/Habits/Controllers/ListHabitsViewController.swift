@@ -16,6 +16,9 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     var timer: Timer?
     var otherTimer: Timer?
     var reloadTimer: Timer?
+    var resetTimer: Timer?
+    
+    let formatter = DateFormatter()
     
     @IBAction func unwindToListHabitsViewController(_ segue: UIStoryboardSegue) {
 
@@ -60,7 +63,12 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
-        if general.lastopened != Date() as NSDate {
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let today = formatter.string(from: Date())
+        
+        if general.lastopened != today {
             general.callfunction = true
         } else {
             general.callfunction = false
@@ -72,8 +80,8 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         {
             timer?.invalidate()
         }
-        timer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
+        resetTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(ListHabitsViewController.reset), userInfo: nil, repeats: true)
+        RunLoop.current.add(resetTimer!, forMode: RunLoopMode.commonModes)
         
         if(timer != nil)
         {
@@ -100,10 +108,15 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let today = formatter.string(from: Date())
+        
         let list = CoreDataHelper.retrieveGeneral()
         let general = list[0]
         
-        general.lastopened = Date() as NSDate
+        general.lastopened = today
         
         CoreDataHelper.saveGeneral()
         
@@ -138,7 +151,11 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
             general.points = 0
             general.rows = 3
             general.callfunction = false
-            general.lastopened = Date() as NSDate
+            formatter.dateFormat = "yyyy MM dd"
+            formatter.timeZone = Calendar.current.timeZone
+            formatter.locale = Calendar.current.locale
+            let today = formatter.string(from: Date())
+            general.lastopened = today
             general.done = ["":[]]
         } else if list.count == 1 {
             self.numberOfPointsLabel.reloadInputViews()
@@ -359,6 +376,13 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
             CoreDataHelper.saveHabit()
+            
+            let list = CoreDataHelper.retrieveGeneral()
+            let general = list[0]
+            
+            general.callfunction = false
+            
+            CoreDataHelper.saveGeneral()
         }
     }
 }
