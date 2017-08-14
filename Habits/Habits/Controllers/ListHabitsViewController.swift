@@ -306,6 +306,7 @@ class ListHabitsViewController: UIViewController, UITableViewDataSource, UITable
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
+        content.sound = UNNotificationSound.default()
         
         var dateComponents = DateComponents()
         dateComponents.hour = hour
